@@ -37,3 +37,12 @@
   font-size: 12px;
   color: var(--muted);
 }
+
+.version {
+  font-family: var(--font-pixel), monospace;
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+  word-break: keep-all;
+}
