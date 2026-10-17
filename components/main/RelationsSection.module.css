@@ -121,7 +121,8 @@
 }
 
 .centerName {
-  font-family: var(--font-serif), serif;
+  font-family: var(--font-cute), sans-serif;
+  font-weight: 400;
   font-size: 18px;
   text-shadow: 0 0 10px var(--bg), 0 0 4px var(--bg);
 }
