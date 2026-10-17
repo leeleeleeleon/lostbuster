@@ -7,90 +7,18 @@
   padding: clamp(80px, 12vw, 140px) 0;
 }
 
-/* ── 눕힌 지도 ── */
+/* ── 3D 숲 ── */
 .stage {
   position: absolute;
+  inset: 0;
   z-index: 0;
-  isolation: isolate;
-  overflow: hidden;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  perspective: 1400px;
-  perspective-origin: 50% 20%;
 }
 
-/* 0 → 1 로 바뀌며 지도가 아래에서 일어서고 땅이 두꺼워진다 */
-@property --rise {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 0;
-}
-
-.stage :global(.reveal),
-.stage:global(.reveal) {
-  opacity: 1;
-  transform: none;
-}
-
-/* 세계수 자리 (지도 안 위치) */
-.plane {
-  --rise: 0;
-  --tree-x: 43%;
-  --tree-y: 26%;
-  position: relative;
-  width: min(600px, 84vw);
-  aspect-ratio: 936 / 876;
-  transform-style: preserve-3d;
-  transform-origin: var(--tree-x) var(--tree-y);
-  /* 나무가 화면 가운데보다 조금 위에 오도록 */
-  transform:
-    translate(calc(50% - var(--tree-x)), calc(-6% - var(--tree-y)))
-    translateY(calc((1 - var(--rise)) * 55%))
-    rotateX(calc(56deg + (1 - var(--rise)) * 30deg))
-    rotateZ(calc(-9deg + (1 - var(--rise)) * 12deg))
-    translateY(4%);
-  opacity: calc(var(--rise) * 1.6);
-  transition: --rise 2.2s cubic-bezier(0.2, 0.9, 0.25, 1.08);
-}
-
-.stage:global(.shown) .plane {
-  --rise: 1;
-}
-
-.float {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  transform-origin: var(--tree-x) var(--tree-y);
-  animation: orbit 90s linear infinite;
-}
-
-.layer,
-.top {
-  position: absolute;
-  inset: 0;
+.stage canvas {
+  display: block;
   width: 100%;
   height: 100%;
   image-rendering: pixelated;
-  user-select: none;
-  pointer-events: none;
-}
-
-/* 아래층일수록 어둡게 → 흙으로 된 옆면 */
-.layer {
-  transform: translateZ(calc(var(--z) * -2px * var(--rise)));
-  filter: brightness(calc(0.62 - var(--z) * 0.022)) sepia(0.7) saturate(1.4) hue-rotate(-12deg);
-}
-
-.layer:first-child {
-  filter: brightness(0) blur(6px);
-  opacity: 0.6;
-  transform: translateZ(calc(-90px * var(--rise))) scale(1.02);
-}
-
-.top {
-  filter: saturate(1.1) brightness(0.95);
 }
 
 /* 글씨가 잘 보이도록 가운데를 살짝 어둡게, 가장자리는 배경에 녹인다 */
@@ -224,19 +152,11 @@ a.button:active {
   border-color: var(--gold);
 }
 
-@keyframes orbit {
-  to { transform: rotateZ(360deg); }
-}
-
 @keyframes bounce {
   50% { transform: translateY(6px); }
 }
 
 @media (max-width: 760px) {
-  .plane {
-    width: 96vw;
-  }
-
   .button {
     padding: 14px 24px 14px 20px;
     gap: 14px;
@@ -244,6 +164,5 @@ a.button:active {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .float, .arrow { animation: none; }
-  .plane { transition: none; }
+  .arrow { animation: none; }
 }
