@@ -1,0 +1,86 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  cursor: pointer;
+  outline: none;
+  animation: reveal 2.6s ease-out both;
+  z-index: 50;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: max(4vh, 24px);
+  text-align: center;
+  pointer-events: none;
+  animation: rise 2s 1.6s ease-out both;
+}
+
+.logo {
+  font-family: var(--font-cinzel), serif;
+  font-size: clamp(14px, 1.6vw, 20px);
+  letter-spacing: 0.6em;
+  margin-right: -0.6em;
+  color: rgba(214, 232, 206, 0.82);
+}
+
+.hint {
+  margin-top: 10px;
+  font-family: var(--font-serif), serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  margin-right: -0.3em;
+  color: rgba(190, 220, 180, 0.6);
+  animation: breathe 3.2s 3.6s ease-in-out infinite;
+}
+
+.flash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 55%, #eafbe9 0%, #a8ddb3 35%, #2f6b48 75%, #0b1a12 100%);
+}
+
+.leaving .caption {
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+.leaving .flash {
+  animation: flash 0.55s 0.6s ease-in forwards;
+}
+
+@keyframes reveal {
+  from { filter: brightness(0); }
+  to { filter: brightness(1); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+@keyframes flash {
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro, .caption, .hint { animation: none; }
+  .leaving .flash { animation-duration: 0.3s; }
+}
