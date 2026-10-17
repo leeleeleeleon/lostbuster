@@ -16,7 +16,7 @@ export default function Home() {
     try {
       seen = sessionStorage.getItem(SEEN_KEY) === "1";
     } catch {}
-    // /#news 처럼 특정 섹션 링크로 들어오면 인트로를 건너뛴다
+    // /#world 처럼 특정 섹션 링크로 들어오면 인트로를 건너뛴다
     if (window.location.hash) seen = true;
     // eslint-disable-next-line react-hooks/set-state-in-effect -- sessionStorage는 마운트 후에만 읽을 수 있다
     setPhase(seen ? "main" : "intro");

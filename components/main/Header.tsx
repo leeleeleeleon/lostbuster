@@ -7,7 +7,7 @@ import styles from "./Header.module.css";
 const NAV = [
   { href: "#world", label: "세계관" },
   { href: "#spirits", label: "정령" },
-  { href: "#news", label: "소식" },
+  { href: "#relations", label: "관계도" },
 ];
 
 export default function Header({ onLogoClick }: { onLogoClick: () => void }) {
@@ -22,7 +22,7 @@ export default function Header({ onLogoClick }: { onLogoClick: () => void }) {
   }, []);
 
   return (
-    <header className={`${styles.header} ${scrolled || open ? styles.solid : ""}`}>
+    <header className={`${styles.header} ${scrolled || open ? styles.solid : styles.light}`}>
       <div className={`container ${styles.inner}`}>
         <button className={styles.logo} onClick={onLogoClick} title="인트로 다시 보기">
           LOSTBUSTER

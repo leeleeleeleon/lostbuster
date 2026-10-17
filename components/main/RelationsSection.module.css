@@ -1,0 +1,264 @@
+.section {
+  padding: clamp(72px, 10vw, 140px) 0;
+}
+
+.lead {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* ── 정령 고르기 ── */
+.picker {
+  list-style: none;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 8px;
+}
+
+.pick {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 4px 10px;
+  border: 1px solid var(--line);
+  background: rgba(5, 10, 7, 0.5);
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.pick:hover:not(:disabled),
+.pick[data-active] {
+  border-color: color-mix(in srgb, var(--g) 70%, transparent);
+  color: var(--text);
+}
+
+.pick[data-active] {
+  box-shadow: inset 0 0 24px color-mix(in srgb, var(--g) 18%, transparent);
+}
+
+.pick:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pick small {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.pickFace {
+  width: 44px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  image-rendering: pixelated;
+  mask-image: radial-gradient(circle, #000 52%, transparent 66%);
+}
+
+/* ── 본문: 왼쪽 원형 관계도, 오른쪽 목록 ── */
+.body {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.chart {
+  aspect-ratio: 1;
+  position: sticky;
+  top: 88px;
+}
+
+.lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lines g {
+  transition: opacity 0.2s;
+}
+
+.node {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  image-rendering: pixelated;
+  mask-image: radial-gradient(circle, #000 52%, transparent 66%);
+}
+
+.lg { width: clamp(72px, 16%, 104px); }
+.sm { width: 44px; flex: none; }
+
+.center .lg { width: 100%; }
+
+.tree {
+  display: grid;
+  place-items: center;
+  mask-image: none;
+  background: radial-gradient(circle, #6fbf6a, #24603a);
+  color: #e9f6e2;
+  font-family: var(--font-serif), serif;
+  font-size: 11px;
+}
+
+.lg.tree { font-size: 16px; }
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.centerName {
+  font-family: var(--font-serif), serif;
+  font-size: 18px;
+  text-shadow: 0 0 10px var(--bg), 0 0 4px var(--bg);
+}
+
+.around {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  background: none;
+  color: var(--text);
+  cursor: default;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.around .sm {
+  box-shadow: 0 0 0 2px var(--k);
+  mask-image: none;
+  width: clamp(36px, 10vw, 54px);
+}
+
+.around:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.around[data-dim] {
+  opacity: 0.35;
+}
+
+.aroundName {
+  font-size: 12px;
+  white-space: nowrap;
+  text-shadow: 0 0 6px var(--bg);
+}
+
+.side {
+  min-width: 0;
+}
+
+.legend {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend span {
+  width: 14px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.note {
+  margin-top: 18px;
+  font-family: var(--font-serif), serif;
+  color: var(--gold);
+}
+
+.list {
+  list-style: none;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  gap: 14px;
+  padding: 14px 10px;
+  border-top: 1px solid var(--line);
+  transition: background 0.2s;
+}
+
+.item[data-active] {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.item .sm {
+  width: 40px;
+  height: 40px;
+  align-self: flex-start;
+}
+
+.itemHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.itemHead strong {
+  font-family: var(--font-serif), serif;
+  font-size: 16px;
+  margin-right: 4px;
+}
+
+.badge {
+  padding: 0 7px;
+  border: 1px solid var(--k);
+  color: var(--k);
+  font-size: 11px;
+  line-height: 18px;
+}
+
+.tag {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.text {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #c7d1c2;
+  word-break: keep-all;
+}
+
+@media (max-width: 900px) {
+  .picker { grid-template-columns: repeat(5, 1fr); }
+  .body { grid-template-columns: 1fr; gap: 28px; }
+  .chart { position: relative; top: 0; width: min(520px, 100%); margin: 0 auto; }
+}
+
+@media (max-width: 520px) {
+  .pickFace { width: 36px; }
+  .aroundName { font-size: 11px; }
+}

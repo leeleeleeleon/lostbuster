@@ -5,8 +5,8 @@ import AmbientCanvas from "./AmbientCanvas";
 import Footer from "./Footer";
 import Header from "./Header";
 import Hero from "./Hero";
-import NewsSection from "./NewsSection";
 import DownloadSection from "./DownloadSection";
+import RelationsSection from "./RelationsSection";
 import SpiritsSection from "./SpiritsSection";
 import SpoilerSection from "./SpoilerSection";
 import WorldSection from "./WorldSection";
@@ -29,7 +29,7 @@ export default function MainSite({ fromIntro, onReplayIntro }: Props) {
         <Hero />
         <WorldSection />
         <SpiritsSection />
-        <NewsSection />
+        <RelationsSection />
         <DownloadSection />
         <SpoilerSection />
       </main>

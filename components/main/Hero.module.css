@@ -7,11 +7,16 @@
   align-items: center;
   justify-content: center;
   gap: clamp(40px, 7vh, 72px);
-  background: radial-gradient(ellipse 60% 45% at 50% 62%, rgba(40, 70, 50, 0.28), transparent 75%), var(--bg);
+  background: #fbfaf7;
+  color: #1c241e;
 }
 
 .copy {
   text-align: center;
+}
+
+.copy :global(.eyebrow) {
+  color: #9a7d3a;
 }
 
 .title {
@@ -21,11 +26,12 @@
   letter-spacing: 0.08em;
   line-height: 1.15;
   margin: 14px 0 12px;
+  color: #141a16;
 }
 
 .sub {
   font-family: var(--font-serif), serif;
-  color: var(--muted);
+  color: #6b7469;
   font-size: clamp(14px, 1.5vw, 17px);
 }
 
@@ -72,7 +78,7 @@
 .name {
   font-family: var(--font-serif), serif;
   font-size: clamp(12px, 1.2vw, 15px);
-  color: var(--muted);
+  color: #6b7469;
   white-space: nowrap;
   transition: color 0.25s;
 }
@@ -88,7 +94,7 @@
 }
 
 .member:hover .name {
-  color: var(--text);
+  color: #141a16;
 }
 
 .actions {
@@ -108,23 +114,24 @@
 }
 
 .primary {
-  background: rgba(203, 181, 125, 0.14);
-  color: #efe3c2;
+  background: #1c241e;
+  border-color: #1c241e;
+  color: #f4efe0;
 }
 
 .primary:hover {
-  background: var(--gold);
-  color: #12160f;
+  background: #2f5a3c;
+  border-color: #2f5a3c;
 }
 
 .ghost {
-  border-color: var(--line);
-  color: var(--muted);
+  border-color: rgba(0, 0, 0, 0.18);
+  color: #4a544b;
 }
 
 .ghost:hover {
-  border-color: var(--leaf);
-  color: var(--leaf);
+  border-color: #2f5a3c;
+  color: #2f5a3c;
 }
 
 @keyframes rise {
