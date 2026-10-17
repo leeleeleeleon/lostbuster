@@ -27,7 +27,7 @@
 }
 
 .logo {
-  font-family: var(--font-cinzel), serif;
+  font-family: var(--font-en), monospace;
   font-size: clamp(14px, 1.6vw, 20px);
   letter-spacing: 0.6em;
   margin-right: -0.6em;
@@ -36,7 +36,7 @@
 
 .hint {
   margin-top: 10px;
-  font-family: var(--font-serif), serif;
+  font-family: var(--font-pixel), monospace;
   font-size: 13px;
   letter-spacing: 0.3em;
   margin-right: -0.3em;

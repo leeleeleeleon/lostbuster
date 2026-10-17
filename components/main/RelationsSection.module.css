@@ -25,7 +25,7 @@
   gap: 6px;
   padding: 12px 4px 10px;
   border: 1px solid var(--line);
-  background: rgba(5, 10, 7, 0.5);
+  background: rgba(14, 19, 40, 0.5);
   color: var(--muted);
   font-size: 13px;
   cursor: pointer;
@@ -102,7 +102,7 @@
   place-items: center;
   background: radial-gradient(circle, #6fbf6a, #24603a);
   color: #e9f6e2;
-  font-family: var(--font-serif), serif;
+  font-family: var(--font-pixel), monospace;
   font-size: 11px;
 }
 
@@ -121,7 +121,7 @@
 }
 
 .centerName {
-  font-family: var(--font-cute), sans-serif;
+  font-family: var(--font-pixel), monospace;
   font-weight: 400;
   font-size: 18px;
   text-shadow: 0 0 10px var(--bg), 0 0 4px var(--bg);
@@ -186,7 +186,7 @@
 
 .note {
   margin-top: 18px;
-  font-family: var(--font-serif), serif;
+  font-family: var(--font-pixel), monospace;
   color: var(--gold);
 }
 
@@ -223,7 +223,7 @@
 }
 
 .itemHead strong {
-  font-family: var(--font-serif), serif;
+  font-family: var(--font-pixel), monospace;
   font-size: 16px;
   margin-right: 4px;
 }

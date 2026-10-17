@@ -1,12 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Cinzel, Gaegu, Gowun_Batang, Jua, Noto_Sans_KR } from "next/font/google";
+import { Gaegu, Silkscreen } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const serif = Gowun_Batang({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-serif", display: "swap" });
-const sans = Noto_Sans_KR({ weight: ["400", "500", "700"], subsets: ["latin"], variable: "--font-sans", display: "swap" });
-const cinzel = Cinzel({ weight: ["400", "600"], subsets: ["latin"], variable: "--font-cinzel", display: "swap" });
-const cute = Jua({ weight: "400", subsets: ["latin"], variable: "--font-cute", display: "swap" });
+// 한글은 픽셀체 갈무리, 영문 라벨은 Silkscreen
+const en = Silkscreen({ weight: "400", subsets: ["latin"], variable: "--font-en", display: "swap" });
 const hand = Gaegu({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-hand", display: "swap" });
 const pixel = localFont({
   src: [
@@ -23,12 +21,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#1b2240",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ko" className={`${serif.variable} ${sans.variable} ${cinzel.variable} ${pixel.variable} ${cute.variable} ${hand.variable}`}>
+    <html lang="ko" className={`${en.variable} ${pixel.variable} ${hand.variable}`}>
       <body>{children}</body>
     </html>
   );

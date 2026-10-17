@@ -28,7 +28,7 @@
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 34% 26% at 50% 72%, rgba(5, 10, 7, 0.82), rgba(5, 10, 7, 0.45) 60%, transparent 100%),
+    radial-gradient(ellipse 34% 26% at 50% 72%, rgba(14, 19, 40, 0.82), rgba(14, 19, 40, 0.45) 60%, transparent 100%),
     linear-gradient(to bottom, var(--bg), transparent 22%, transparent 78%, var(--bg));
 }
 

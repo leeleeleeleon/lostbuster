@@ -1,29 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MENU } from "@/lib/download";
+import PixelWindow from "./PixelWindow";
 import styles from "./Header.module.css";
 
 const NAV = [
   { href: "#world", label: "세계관" },
   { href: "#spirits", label: "정령" },
   { href: "#relations", label: "관계도" },
+  { href: "#spoiler", label: "스포일러" },
 ];
 
 export default function Header({ onLogoClick }: { onLogoClick: () => void }) {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header className={`${styles.header} ${scrolled || open ? styles.solid : styles.light}`}>
-      <div className={`container ${styles.inner}`}>
+    <header className={styles.header}>
+      <PixelWindow className={styles.inner}>
         <button className={styles.logo} onClick={onLogoClick} title="인트로 다시 보기">
           LOSTBUSTER
         </button>
@@ -55,7 +49,7 @@ export default function Header({ onLogoClick }: { onLogoClick: () => void }) {
           <span />
           <span />
         </button>
-      </div>
+      </PixelWindow>
     </header>
   );
 }

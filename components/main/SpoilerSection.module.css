@@ -1,73 +1,192 @@
 .section {
   padding: clamp(72px, 10vw, 140px) 0;
-  background: linear-gradient(to bottom, transparent, rgba(30, 8, 14, 0.35) 40%, rgba(30, 8, 14, 0.35) 60%, transparent);
+  background: #120c1c;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.kicker {
+  font-family: var(--font-en), monospace;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: #e2445c;
 }
 
 .lead {
-  margin-top: 14px;
-  color: var(--muted);
-  font-size: 15px;
+  color: #b7a9c9;
+  font-size: 14px;
 }
 
-.gate {
+.stage {
+  position: relative;
   margin-top: 40px;
-  padding: 16px 36px;
-  border: 1px dashed rgba(220, 120, 140, 0.45);
-  background: rgba(120, 30, 50, 0.12);
-  color: #e6c3ca;
-  font-size: 15px;
-  letter-spacing: 0.2em;
-  cursor: pointer;
-  transition: background 0.25s;
 }
 
-.gate:hover {
-  background: rgba(120, 30, 50, 0.3);
-}
-
-.grid {
+/* 악당 수만큼 세로 띠. 위는 악당 색, 아래로 갈수록 배경색으로 어두워진다 */
+.row {
   list-style: none;
-  margin-top: 48px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  animation: fade 0.6s ease;
+  display: flex;
+  gap: 6px;
+  height: clamp(380px, 46vw, 520px);
+  transition: filter 0.5s;
+}
+
+.veiled {
+  filter: blur(14px) saturate(0.4);
+  pointer-events: none;
+  user-select: none;
 }
 
 .card {
-  padding: 26px 24px;
-  border: 1px solid rgba(220, 120, 140, 0.18);
-  background: rgba(10, 5, 7, 0.6);
+  flex: 1;
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: linear-gradient(180deg, var(--c), #120c1c 92%);
+  box-shadow: inset 0 0 0 4px #2b1f3d;
+  transition: flex 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  outline: none;
 }
 
-.name {
-  font-family: var(--font-cute), sans-serif;
-  font-weight: 400;
-  font-size: 22px;
-  margin-bottom: 10px;
+.card.on {
+  flex: 4;
+  box-shadow: inset 0 0 0 4px var(--gold);
 }
 
-.body {
-  color: var(--muted);
+.vname {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  writing-mode: vertical-rl;
+  font-size: clamp(18px, 2vw, 26px);
+  color: var(--cream);
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.photo,
+.info {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.photo {
+  top: 16px;
+  bottom: 120px;
+  display: flex;
+  justify-content: center;
+}
+
+.photo img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.slot {
+  width: 100%;
+  border: 3px dashed rgba(255, 248, 228, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.slot i {
+  font-style: normal;
+  font-size: clamp(56px, 7vw, 96px);
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.slot code {
+  font-family: var(--font-en), monospace;
+  font-size: 11px;
+  color: var(--gold);
+}
+
+.info {
+  bottom: 16px;
+  color: var(--cream);
+}
+
+.info h3 {
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.2;
+}
+
+.info p {
   font-size: 14px;
-  line-height: 1.9;
+  color: #d8cde6;
   word-break: keep-all;
 }
 
-.weapon {
-  margin-top: 12px;
+.info em {
+  display: inline-block;
+  margin-top: 4px;
+  font-style: normal;
   font-size: 13px;
-  color: #e6c3ca;
+  color: var(--gold);
 }
 
-@keyframes fade {
-  from { opacity: 0; transform: translateY(10px); }
+.card.on .photo,
+.card.on .info {
+  opacity: 1;
 }
 
-@media (max-width: 860px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
+.card.on .vname {
+  opacity: 0;
 }
 
-@media (max-width: 520px) {
-  .grid { grid-template-columns: 1fr; }
+.gate {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 14px 32px;
+  font-size: 17px;
+  white-space: nowrap;
+}
+
+.gate:active {
+  transform: translate(-50%, calc(-50% + 2px));
+}
+
+/* 좁은 화면에서는 가로로 넘기는 카드 */
+@media (max-width: 768px) {
+  .row {
+    height: 440px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+  }
+  .card,
+  .card.on {
+    flex: 0 0 78%;
+    scroll-snap-align: center;
+  }
+  .card .photo,
+  .card .info {
+    opacity: 1;
+  }
+  .card .vname {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .row { transition: none; }
 }

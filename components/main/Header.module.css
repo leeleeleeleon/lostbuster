@@ -1,82 +1,65 @@
+/* 화면 위에 떠 있는 RPG 창 모양 메뉴 바 */
 .header {
   position: fixed;
-  top: 0;
+  top: 12px;
   left: 0;
   right: 0;
   z-index: 20;
-  transition: background 0.4s, border-color 0.4s;
-  border-bottom: 1px solid transparent;
+  pointer-events: none;
 }
 
-.solid {
-  background: rgba(5, 10, 7, 0.82);
-  backdrop-filter: blur(10px);
-  border-color: var(--line);
-}
-
-/* 맨 위 하얀 첫 화면 위에서는 글자를 어둡게 */
-.light .logo,
-.light .nav .ext {
-  color: #1c241e;
-}
-
-.light .nav a,
-.light .nav .soon {
-  color: #5b665c;
-}
-
-.light .divider {
-  background: rgba(0, 0, 0, 0.15);
-}
-
-.light .burger span {
-  background: #1c241e;
-}
-
-.inner {
+.header .inner {
+  position: relative;
+  width: min(var(--max), 100% - 40px);
+  margin: 6px auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 48px;
+  padding: 0 18px;
+  pointer-events: auto;
 }
 
 .logo {
   background: none;
   border: 0;
   cursor: pointer;
-  font-family: var(--font-cinzel), serif;
-  font-weight: 600;
-  letter-spacing: 0.35em;
+  font-family: var(--font-en), monospace;
+  letter-spacing: 0.15em;
   font-size: 15px;
-  color: var(--text);
+  color: var(--gold);
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
   font-size: 14px;
-  letter-spacing: 0.1em;
 }
 
 .nav a {
-  color: var(--muted);
-  transition: color 0.2s;
+  color: var(--cream);
 }
 
-.nav a:hover {
-  color: var(--leaf);
+.nav a:hover,
+.nav a:focus-visible {
+  color: var(--gold);
+  outline: none;
+}
+
+.nav a:hover::before,
+.nav a:focus-visible::before {
+  content: "▶ ";
 }
 
 .divider {
-  width: 1px;
+  width: 3px;
   height: 14px;
   background: var(--line);
 }
 
-/* 바깥 링크는 조금 더 밝게 */
 .nav .ext {
-  color: var(--text);
+  color: #9ee7ff;
 }
 
 .nav .soon {
@@ -86,7 +69,7 @@
 }
 
 @media (max-width: 1080px) {
-  .nav { gap: 18px; font-size: 13px; letter-spacing: 0.05em; }
+  .nav { gap: 16px; font-size: 13px; }
 }
 
 .burger {
@@ -103,32 +86,35 @@
   position: absolute;
   left: 8px;
   right: 8px;
-  height: 1.5px;
-  background: var(--text);
-  transition: transform 0.3s;
+  height: 3px;
+  background: var(--cream);
+  transition: transform 0.2s steps(2);
 }
 
-.burger span:first-child { top: 14px; }
+.burger span:first-child { top: 12px; }
 .burger span:last-child { top: 21px; }
-.burgerOpen span:first-child { transform: translateY(3.5px) rotate(45deg); }
-.burgerOpen span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+.burgerOpen span:first-child { transform: translateY(4.5px) rotate(45deg); }
+.burgerOpen span:last-child { transform: translateY(-4.5px) rotate(-45deg); }
 
 @media (max-width: 900px) {
   .burger { display: block; }
   .nav {
     position: absolute;
-    top: 64px;
+    top: calc(100% + 12px);
     left: 0;
     right: 0;
     flex-direction: column;
+    align-items: stretch;
     gap: 0;
-    background: rgba(5, 10, 7, 0.96);
-    border-bottom: 1px solid var(--line);
+    background: var(--win);
+    box-shadow:
+      0 0 0 3px var(--cream),
+      0 0 0 6px var(--navy);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s ease;
+    visibility: hidden;
   }
-  .nav a, .nav .soon { padding: 14px 24px; border-top: 1px solid var(--line); }
+  .nav a, .nav .soon { padding: 12px 20px; }
   .divider { display: none; }
-  .open { max-height: 560px; }
+  .open { max-height: 560px; visibility: visible; }
 }

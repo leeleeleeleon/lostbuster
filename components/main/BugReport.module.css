@@ -32,21 +32,19 @@
 .popup {
   margin-right: 12px;
   padding: 12px 14px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--bg-3);
+  background: var(--win);
   color: var(--text);
   font-size: 13px;
   display: grid;
   gap: 6px;
   justify-items: start;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 3px var(--cream), 0 0 0 6px var(--navy);
 }
 
 .title {
   margin: 0;
   color: var(--gold);
-  font-family: var(--font-cute), sans-serif;
+  font-family: var(--font-pixel), monospace;
   font-weight: 400;
 }
 
@@ -57,10 +55,10 @@
 
 .copy {
   padding: 3px 10px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: var(--bg-2);
-  color: var(--muted);
+  border: 0;
+  box-shadow: 0 0 0 2px var(--navy);
+  background: var(--cream);
+  color: var(--navy);
   font-size: 12px;
   cursor: pointer;
 }

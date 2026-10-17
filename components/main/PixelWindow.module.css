@@ -1,0 +1,33 @@
+.win {
+  --t: 3px;
+  background: var(--win);
+  color: var(--cream);
+  border: 0;
+  border-radius: 0;
+  /* 바깥 테두리만큼 여백을 남겨야 옆 요소와 겹치지 않는다 */
+  margin: calc(var(--t) * 2);
+  box-shadow:
+    0 calc(var(--t) * -1) 0 var(--cream),
+    0 var(--t) 0 var(--cream),
+    calc(var(--t) * -1) 0 0 var(--cream),
+    var(--t) 0 0 var(--cream),
+    0 calc(var(--t) * -2) 0 var(--navy),
+    0 calc(var(--t) * 2) 0 var(--navy),
+    calc(var(--t) * -2) 0 0 var(--navy),
+    calc(var(--t) * 2) 0 0 var(--navy);
+}
+
+.interactive {
+  cursor: pointer;
+  transition: background 0.15s, transform 0.08s;
+}
+
+.interactive:hover,
+.interactive:focus-visible {
+  background: #3a4c9a;
+  outline: none;
+}
+
+.interactive:active {
+  transform: translateY(2px);
+}

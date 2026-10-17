@@ -1,7 +1,7 @@
 .footer {
   border-top: 1px solid var(--line);
   padding: 48px 0 56px;
-  background: rgba(3, 6, 4, 0.8);
+  background: rgba(10, 13, 28, 0.8);
 }
 
 .inner {
@@ -13,7 +13,7 @@
 }
 
 .logo {
-  font-family: var(--font-cinzel), serif;
+  font-family: var(--font-en), monospace;
   letter-spacing: 0.4em;
   margin-right: -0.4em;
   font-size: 14px;
