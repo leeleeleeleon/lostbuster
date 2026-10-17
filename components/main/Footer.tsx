@@ -1,3 +1,4 @@
+import { LINKS } from "@/lib/download";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -6,9 +7,11 @@ export default function Footer() {
       <div className={`container ${styles.inner}`}>
         <p className={styles.logo}>LOSTBUSTER</p>
         <nav className={styles.links}>
-          <a href="#">이용약관</a>
-          <a href="#">개인정보처리방침</a>
-          <a href="#">고객지원</a>
+          {LINKS.map((l) => (
+            <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">
+              {l.label}
+            </a>
+          ))}
         </nav>
         <p className={styles.copy}>© 2026 LOSTBUSTER. All rights reserved.</p>
       </div>

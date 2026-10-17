@@ -4,19 +4,26 @@ import styles from "./WorldSection.module.css";
 const CHAPTERS = [
   {
     no: "I",
-    title: "지도에 없는 숲",
-    body: "길을 잃은 것들만이 닿을 수 있는 숲이 있다. 그 한가운데, 하늘을 덮을 만큼 커다란 나무 한 그루가 천 년의 밤을 지키고 서 있다. 사람들은 그것을 세계수라 불렀다.",
+    title: "세계수",
+    body: "태초부터 존재했다고 전해져 내려오는 엄청나게 큰 나무. 정령들이 지켜야 할 존재.",
   },
   {
     no: "II",
-    title: "열 개의 천",
-    body: "세계수의 가지에는 열 가지 빛깔의 천이 묶여 있다. 천 하나하나는 나무를 지키겠다는 정령의 약속. 바람이 불 때마다 천이 나부끼며 숲 구석구석에 그 약속을 전한다.",
+    title: "정령",
+    body: "세계수가 자신을 지키기 위해 만들어 낸 스틱맨 같은 존재들. 마정석이라는, 심장과도 같은 존재가 동력이 되어 움직인다.",
   },
   {
     no: "III",
-    title: "로스트버스터",
-    body: "언제부턴가 숲에 '잃어버린 것들'이 스며들기 시작했다. 잊힌 이름, 버려진 기억, 길을 잃은 마음. 그것들은 세계수의 뿌리를 갉아먹는다. 정령들은 그들을 쫓는 자, 로스트버스터가 되기로 했다.",
+    title: "제3의 세력",
+    body: "세계수를 지키기 위해 태어난 10명의 정령들. 몰려오는 여러 위험과 모험을 이겨내고 세계수를 무사히 지킬 수 있을까? 그리고, 세계수를 파괴하기 위한 제3의 세력은…?!",
   },
+];
+
+const REGIONS = [
+  { name: "자몽산", body: "세계수와 정령들의 거주지가 있는 지역. 보통 정령들은 이곳의 마을에서 살아간다." },
+  { name: "너겟산", body: "여러 마을과 마물들이 사는 더운 지역." },
+  { name: "갈치산", body: "유일하게 인간들이 살고 있는 추운 지역. 유명한 갈치 제약이 이곳에 들어서 있다." },
+  { name: "냥산", body: "공개된 정보 없음." },
 ];
 
 export default function WorldSection() {
@@ -36,6 +43,20 @@ export default function WorldSection() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal>
+          <h3 className={styles.regionsTitle}>지역</h3>
+        </Reveal>
+        <ul className={styles.regions}>
+          {REGIONS.map((r, i) => (
+            <li key={r.name}>
+              <Reveal delay={i * 100} className={styles.region}>
+                <h4 className={styles.regionName}>{r.name}</h4>
+                <p className={styles.body}>{r.body}</p>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

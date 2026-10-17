@@ -6,15 +6,17 @@ export type Spirit = {
   title: string;
   color: string;
   glow: string;
-  summary: string;
-  story?: string;
-  // 주인공
+  // 소개 문장. 첫 줄이 카드 상세의 대표 문구가 된다.
+  traits: string[];
+  height: number;
+  weapon?: string;
+  // 방에 서 있는 스탠딩 일러스트 경로(public/ 기준). 없으면 로비 얼굴 아이콘을 크게 띄운다.
+  standing?: string;
+  // 주인공조
   lead?: boolean;
   // 검은 천: 어두운 배경에 묻히지 않게 테두리를 밝힌다
   dark?: boolean;
 };
-
-const TBA = "자세한 이야기는 곧 공개됩니다.";
 
 export const SPIRITS: Spirit[] = [
   {
@@ -23,24 +25,31 @@ export const SPIRITS: Spirit[] = [
     title: "마젠타의 천",
     color: "#d23c98",
     glow: "#ff6cc4",
-    summary: TBA,
+    traits: ["홍차를 좋아하고 몸이 약하다.", "이든과 교제 중이다."],
+    height: 165,
+    weapon: "지팡이(검)",
   },
   {
     id: "oyu",
     name: "오유",
-    title: "연두의 천 · 주인공",
+    title: "연두의 천 · 주인공조",
     color: "#9ccf4a",
     glow: "#c4f57a",
-    summary: TBA,
+    traits: ["자몽 마을의 유일한 신부.", "마을에서 종교를 믿는 것은 본인뿐이다."],
+    height: 170,
+    weapon: "창",
     lead: true,
   },
   {
     id: "gungun",
     name: "군군",
-    title: "검정의 천",
+    title: "검정의 천 · 주인공조",
     color: "#17171a",
     glow: "#7d8ba0",
-    summary: TBA,
+    traits: ["개찐따여서 모르는 사람이 말을 걸면 기절한 척을 한다."],
+    height: 159,
+    weapon: "식칼",
+    lead: true,
     dark: true,
   },
   {
@@ -49,7 +58,9 @@ export const SPIRITS: Spirit[] = [
     title: "흰색의 천",
     color: "#f1eee4",
     glow: "#ffffff",
-    summary: TBA,
+    traits: ["버릇으로 중지를 달고 다닌다.", "시안과 자주 싸운다.", "마젠타와 교제 중이다."],
+    height: 187,
+    weapon: "주먹과 너클",
   },
   {
     id: "ire",
@@ -57,7 +68,9 @@ export const SPIRITS: Spirit[] = [
     title: "노랑의 천",
     color: "#efc42f",
     glow: "#ffe06a",
-    summary: TBA,
+    traits: ["엔지니어로 일하며, 범블비라는 반려 드론이 있다.", "I와 무언가 관계가 있어 보인다."],
+    height: 177,
+    weapon: "렌치",
   },
   {
     id: "jamo",
@@ -65,7 +78,9 @@ export const SPIRITS: Spirit[] = [
     title: "빨강의 천",
     color: "#c8313a",
     glow: "#ff5a4a",
-    summary: TBA,
+    traits: ["자몽의, 자몽을 위한, 자몽에 의한 삶을 산다.", "혈액이 자몽주스로 이루어져 있다."],
+    height: 152,
+    weapon: "자몽",
   },
   {
     id: "i",
@@ -73,7 +88,13 @@ export const SPIRITS: Spirit[] = [
     title: "흰색의 천",
     color: "#e6ecef",
     glow: "#d8f2ff",
-    summary: TBA,
+    traits: [
+      "유행하는 게 있으면 다 해본다.",
+      "뭐든지 만들어 낼 수 있는 능력을 가지고 있다. (한계 있음)",
+      "이레와 무언가 관계가 있는 것처럼 보인다.",
+      "보통 싸우지 않는다.",
+    ],
+    height: 183,
   },
   {
     id: "innocent",
@@ -81,7 +102,9 @@ export const SPIRITS: Spirit[] = [
     title: "연분홍의 천",
     color: "#f2b4c6",
     glow: "#ffd2e0",
-    summary: TBA,
+    traits: ["온몸이 비누로 이루어져 있어, 미끌미끌하다."],
+    height: 178,
+    weapon: "막대기(철)",
   },
   {
     id: "welsiet",
@@ -89,7 +112,9 @@ export const SPIRITS: Spirit[] = [
     title: "보라의 천",
     color: "#7a48b8",
     glow: "#b583ff",
-    summary: TBA,
+    traits: ["정수리에 새싹이 자랐으며, IQ가 약 18 언저리.", "시안과 교제 중이다."],
+    height: 160,
+    weapon: "■■■과 마법",
   },
   {
     id: "cyan",
@@ -97,6 +122,12 @@ export const SPIRITS: Spirit[] = [
     title: "시안의 천",
     color: "#38c3d4",
     glow: "#7cf0ff",
-    summary: TBA,
+    traits: [
+      "중2병이 심하다.",
+      "자기 방에서 누가 봐도 중2병 같은 춤을 추다가 책장에 발이 찍혀 잠시 기절한 적이 있다.",
+      "웰시엣과 교제 중이다.",
+    ],
+    height: 172,
+    weapon: "도끼와 흑마법",
   },
 ];

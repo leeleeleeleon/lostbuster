@@ -35,9 +35,49 @@
   word-break: keep-all;
 }
 
+.regionsTitle {
+  margin-top: 96px;
+  font-family: var(--font-serif), serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+}
+
+.regions {
+  list-style: none;
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.region {
+  height: 100%;
+  padding: 24px 22px;
+  border: 1px solid var(--line);
+  background: rgba(5, 10, 7, 0.5);
+}
+
+.regionName {
+  font-family: var(--font-serif), serif;
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
 @media (max-width: 860px) {
   .chapters {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+
+  .regions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .regions {
+    grid-template-columns: 1fr;
   }
 }

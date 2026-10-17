@@ -34,9 +34,10 @@
 
 .nav {
   display: flex;
-  gap: 36px;
+  align-items: center;
+  gap: 28px;
   font-size: 14px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
 }
 
 .nav a {
@@ -46,6 +47,27 @@
 
 .nav a:hover {
   color: var(--leaf);
+}
+
+.divider {
+  width: 1px;
+  height: 14px;
+  background: var(--line);
+}
+
+/* 바깥 링크는 조금 더 밝게 */
+.nav .ext {
+  color: var(--text);
+}
+
+.nav .soon {
+  color: var(--muted);
+  opacity: 0.5;
+  cursor: default;
+}
+
+@media (max-width: 1080px) {
+  .nav { gap: 18px; font-size: 13px; letter-spacing: 0.05em; }
 }
 
 .burger {
@@ -72,7 +94,7 @@
 .burgerOpen span:first-child { transform: translateY(3.5px) rotate(45deg); }
 .burgerOpen span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .burger { display: block; }
   .nav {
     position: absolute;
@@ -87,6 +109,7 @@
     overflow: hidden;
     transition: max-height 0.35s ease;
   }
-  .nav a { padding: 16px 24px; border-top: 1px solid var(--line); }
-  .open { max-height: 320px; }
+  .nav a, .nav .soon { padding: 14px 24px; border-top: 1px solid var(--line); }
+  .divider { display: none; }
+  .open { max-height: 560px; }
 }

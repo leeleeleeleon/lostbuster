@@ -8,6 +8,7 @@ import Hero from "./Hero";
 import NewsSection from "./NewsSection";
 import DownloadSection from "./DownloadSection";
 import SpiritsSection from "./SpiritsSection";
+import SpoilerSection from "./SpoilerSection";
 import WorldSection from "./WorldSection";
 import styles from "./MainSite.module.css";
 
@@ -30,6 +31,7 @@ export default function MainSite({ fromIntro, onReplayIntro }: Props) {
         <SpiritsSection />
         <NewsSection />
         <DownloadSection />
+        <SpoilerSection />
       </main>
       <Footer />
       {fromIntro && <div className={styles.flashOut} aria-hidden="true" />}

@@ -1,7 +1,7 @@
 .section {
   padding: clamp(80px, 12vw, 160px) 0;
   background:
-    radial-gradient(ellipse 60% 70% at 50% 100%, rgba(40, 90, 58, 0.28), transparent 70%);
+    radial-gradient(ellipse 60% 45% at 50% 60%, rgba(40, 90, 58, 0.28), transparent 70%);
 }
 
 .inner {
@@ -45,4 +45,30 @@ a.button:hover {
   font-size: 11px;
   color: var(--muted);
   letter-spacing: 0.1em;
+}
+
+a.button:hover small {
+  color: inherit;
+}
+
+.links {
+  list-style: none;
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.links a {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.links a:hover {
+  color: var(--text);
+  border-color: var(--gold);
 }

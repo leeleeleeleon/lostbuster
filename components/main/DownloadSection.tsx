@@ -1,4 +1,4 @@
-import { DOWNLOAD_URL } from "@/lib/download";
+import { DOWNLOAD_URL, LINKS } from "@/lib/download";
 import Reveal from "./Reveal";
 import styles from "./DownloadSection.module.css";
 
@@ -13,7 +13,7 @@ export default function DownloadSection() {
         </Reveal>
         <Reveal delay={120}>
           {DOWNLOAD_URL ? (
-            <a href={DOWNLOAD_URL} className={styles.button}>
+            <a href={DOWNLOAD_URL} className={styles.button} target="_blank" rel="noopener noreferrer">
               게임 다운로드
             </a>
           ) : (
@@ -22,6 +22,17 @@ export default function DownloadSection() {
               <small>준비 중</small>
             </span>
           )}
+        </Reveal>
+        <Reveal delay={200}>
+          <ul className={styles.links}>
+            {LINKS.map((l) => (
+              <li key={l.href}>
+                <a href={l.href} target="_blank" rel="noopener noreferrer">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </Reveal>
       </div>
     </section>

@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { MENU } from "@/lib/download";
 import styles from "./Header.module.css";
 
 const NAV = [
   { href: "#world", label: "세계관" },
   { href: "#spirits", label: "정령" },
   { href: "#news", label: "소식" },
-  { href: "#download", label: "다운로드" },
 ];
 
 export default function Header({ onLogoClick }: { onLogoClick: () => void }) {
@@ -33,6 +33,18 @@ export default function Header({ onLogoClick }: { onLogoClick: () => void }) {
               {n.label}
             </a>
           ))}
+          <span className={styles.divider} aria-hidden="true" />
+          {MENU.map((m) =>
+            m.href ? (
+              <a key={m.label} href={m.href} target="_blank" rel="noopener noreferrer" className={styles.ext}>
+                {m.label}
+              </a>
+            ) : (
+              <span key={m.label} className={`${styles.ext} ${styles.soon}`} title="준비 중">
+                {m.label}
+              </span>
+            ),
+          )}
         </nav>
         <button
           className={`${styles.burger} ${open ? styles.burgerOpen : ""}`}

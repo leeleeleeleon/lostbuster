@@ -1,0 +1,72 @@
+.section {
+  padding: clamp(72px, 10vw, 140px) 0;
+  background: linear-gradient(to bottom, transparent, rgba(30, 8, 14, 0.35) 40%, rgba(30, 8, 14, 0.35) 60%, transparent);
+}
+
+.lead {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.gate {
+  margin-top: 40px;
+  padding: 16px 36px;
+  border: 1px dashed rgba(220, 120, 140, 0.45);
+  background: rgba(120, 30, 50, 0.12);
+  color: #e6c3ca;
+  font-size: 15px;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.gate:hover {
+  background: rgba(120, 30, 50, 0.3);
+}
+
+.grid {
+  list-style: none;
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  animation: fade 0.6s ease;
+}
+
+.card {
+  padding: 26px 24px;
+  border: 1px solid rgba(220, 120, 140, 0.18);
+  background: rgba(10, 5, 7, 0.6);
+}
+
+.name {
+  font-family: var(--font-serif), serif;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.body {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+  word-break: keep-all;
+}
+
+.weapon {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #e6c3ca;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+}
+
+@media (max-width: 860px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .grid { grid-template-columns: 1fr; }
+}
