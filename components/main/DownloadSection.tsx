@@ -4,7 +4,7 @@ import { DOWNLOAD_URL, LINKS } from "@/lib/download";
 import Reveal from "./Reveal";
 import styles from "./DownloadSection.module.css";
 
-const MAP = "/maps/world.png";
+const MAP = "/maps/tree.png";
 // 같은 지도를 조금씩 아래로 겹쳐 쌓아 땅의 두께를 만든다
 const DEPTH = 24;
 
@@ -45,7 +45,7 @@ function DownloadButton() {
 export default function DownloadSection() {
   return (
     <section id="download" className={styles.section}>
-      {/* 지도를 눕혀 떠 있는 섬처럼. 화면에 들어오면 아래에서 솟아오른다 */}
+      {/* 세계수 숲을 눕혀 떠 있는 섬처럼. 화면에 들어오면 아래에서 솟아오르고, 나무를 축으로 천천히 돈다 */}
       <Reveal className={styles.stage}>
         <div className={styles.plane} aria-hidden="true">
           <div className={styles.float}>

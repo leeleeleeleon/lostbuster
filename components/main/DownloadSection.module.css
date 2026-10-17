@@ -33,13 +33,19 @@
   transform: none;
 }
 
+/* 세계수 자리 (지도 안 위치) */
 .plane {
   --rise: 0;
+  --tree-x: 43%;
+  --tree-y: 26%;
   position: relative;
-  width: min(1180px, 130vw);
-  aspect-ratio: 1644 / 842;
+  width: min(600px, 84vw);
+  aspect-ratio: 936 / 876;
   transform-style: preserve-3d;
+  transform-origin: var(--tree-x) var(--tree-y);
+  /* 나무가 화면 가운데보다 조금 위에 오도록 */
   transform:
+    translate(calc(50% - var(--tree-x)), calc(-6% - var(--tree-y)))
     translateY(calc((1 - var(--rise)) * 55%))
     rotateX(calc(56deg + (1 - var(--rise)) * 30deg))
     rotateZ(calc(-9deg + (1 - var(--rise)) * 12deg))
@@ -56,7 +62,8 @@
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
-  animation: hover 9s ease-in-out infinite;
+  transform-origin: var(--tree-x) var(--tree-y);
+  animation: orbit 90s linear infinite;
 }
 
 .layer,
@@ -93,13 +100,14 @@
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 34% 30% at 50% 50%, rgba(5, 10, 7, 0.82), rgba(5, 10, 7, 0.45) 60%, transparent 100%),
+    radial-gradient(ellipse 34% 26% at 50% 72%, rgba(5, 10, 7, 0.82), rgba(5, 10, 7, 0.45) 60%, transparent 100%),
     linear-gradient(to bottom, var(--bg), transparent 22%, transparent 78%, var(--bg));
 }
 
 .inner {
   position: relative;
   z-index: 2;
+  margin-top: clamp(240px, 34vw, 380px);
   text-align: center;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
 }
@@ -112,19 +120,19 @@
 
 /* ── 도트 게임 버튼 ── */
 .button {
-  --face: #6fcf4f;
-  --face-hi: #a8ee7c;
-  --face-lo: #3f9a2c;
-  --side: #23601a;
-  --edge: #0c2210;
+  --face: #ffffff;
+  --face-hi: #ffffff;
+  --face-lo: #d6d6d6;
+  --side: #9a9a9a;
+  --edge: #111111;
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 18px;
   margin-top: 48px;
   padding: 16px 34px 16px 28px;
-  color: #fff;
-  text-shadow: 2px 2px 0 var(--side);
+  color: #111;
+  text-shadow: 2px 2px 0 var(--face-lo);
   background: var(--face);
   /* 계단 모서리 테두리 + 위 하이라이트 + 아래 두께 */
   box-shadow:
@@ -145,8 +153,8 @@
 .arrow {
   width: 30px;
   height: 40px;
-  fill: #fff;
-  filter: drop-shadow(3px 3px 0 var(--side));
+  fill: #111;
+  filter: drop-shadow(3px 3px 0 var(--face-lo));
   animation: bounce 1s steps(2, jump-none) infinite;
 }
 
@@ -168,12 +176,12 @@
   font-family: var(--font-pixel), monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
-  text-shadow: 1px 1px 0 var(--side);
-  opacity: 0.9;
+  text-shadow: none;
+  color: #444;
 }
 
 a.button:hover {
-  --face: #84e05f;
+  --face: #f1f1ea;
 }
 
 a.button:active {
@@ -216,9 +224,8 @@ a.button:active {
   border-color: var(--gold);
 }
 
-@keyframes hover {
-  0%, 100% { transform: translateZ(0) rotateZ(0deg); }
-  50% { transform: translateZ(22px) rotateZ(1.5deg); }
+@keyframes orbit {
+  to { transform: rotateZ(360deg); }
 }
 
 @keyframes bounce {
@@ -227,7 +234,7 @@ a.button:active {
 
 @media (max-width: 760px) {
   .plane {
-    width: 170vw;
+    width: 96vw;
   }
 
   .button {
