@@ -18,6 +18,34 @@ const ZOOM_MS = 750;
 
 type Phase = "lobby" | "zoom" | "room" | "leave";
 
+/** 방 배경 노트에 정령 색 볼펜으로 끄적인 낙서 */
+function Doodles() {
+  const pen = { fill: "none", strokeWidth: 2.4, strokeLinecap: "round", strokeLinejoin: "round", stroke: "currentColor" } as const;
+  return (
+    <>
+      <span className={styles.tape} data-pos="l" />
+      <span className={styles.tape} data-pos="r" />
+      <svg className={styles.doodle} data-pos="star" viewBox="0 0 48 48" {...pen}>
+        <path d="M24 5l5.6 12.2 13 1.4-9.8 8.8 2.8 12.9L24 33.6l-11.6 6.7 2.8-12.9-9.8-8.8 13-1.4z" />
+      </svg>
+      <svg className={styles.doodle} data-pos="heart" viewBox="0 0 48 48" {...pen}>
+        <path d="M24 40C10 30 5 22 8 14c3-7 12-8 16-1 4-7 13-6 16 1 3 8-2 16-16 26z" />
+        <path d="M14 16c1-2 3-3 5-3" />
+      </svg>
+      <svg className={styles.doodle} data-pos="leaf" viewBox="0 0 64 64" {...pen}>
+        <path d="M12 52C10 30 24 12 52 10c2 26-14 42-40 42z" />
+        <path d="M12 52L40 24M24 40l-2-10M32 32l8 2" />
+      </svg>
+      <svg className={styles.doodle} data-pos="swirl" viewBox="0 0 64 32" {...pen}>
+        <path d="M4 20c6-14 14 8 20-4s14 8 20-4 12 6 16 0" />
+      </svg>
+      <svg className={styles.doodle} data-pos="spark" viewBox="0 0 40 40" {...pen}>
+        <path d="M20 4v10M20 26v10M4 20h10M26 20h10" />
+      </svg>
+    </>
+  );
+}
+
 export default function SpiritsSection() {
   const [door, setDoor] = useState<Door | null>(null);
   const [phase, setPhase] = useState<Phase>("lobby");
@@ -168,8 +196,9 @@ export default function SpiritsSection() {
         createPortal(
           <div className={styles.room} style={vars(spirit)} data-dark={spirit.dark || undefined} onPointerMove={onRoomMove} role="dialog" aria-modal="true" aria-label={`${spirit.name}의 방`}>
             <div className={styles.roomGlow} style={{ transform: `translate(${look.x * -30}px, ${look.y * -20}px)` }} />
-            <div className={styles.roomFloor} style={{ transform: `rotateX(72deg) translateX(${look.x * -40}px)` }} />
-            <div className={styles.motes} style={{ transform: `translate(${look.x * -60}px, ${look.y * -40}px)` }} />
+            <div className={styles.doodles} style={{ transform: `translate(${look.x * -24}px, ${look.y * -16}px)` }} aria-hidden="true">
+              <Doodles />
+            </div>
 
             <div key={spirit.id} className={styles.roomInner}>
               <div className={styles.standing} style={{ transform: `translate(${look.x * 18}px, ${look.y * 10}px)` }}>

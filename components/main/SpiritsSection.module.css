@@ -148,57 +148,61 @@
   inset: 0;
   z-index: 60;
   overflow: hidden;
-  background: #040705;
+  /* 줄 노트 한 장. 글씨도 검은 펜 색으로 */
+  --text: #262c27;
+  --muted: #6d736c;
+  --line: rgba(38, 44, 39, 0.16);
+  --ink: color-mix(in srgb, var(--g) 55%, #262c27);
+  --rule: 34px;
+  color: var(--text);
+  background:
+    linear-gradient(to right, transparent 64px, #f3a5b1 64px 66px, transparent 66px 70px, #f3a5b1 70px 71px, transparent 71px),
+    repeating-linear-gradient(to bottom, transparent 0 calc(var(--rule) - 1.5px), #c9dcf0 calc(var(--rule) - 1.5px) var(--rule)),
+    #fffdf5;
   animation: roomIn 0.6s ease;
 }
 
 .roomGlow {
   position: absolute;
   inset: -60px;
-  background:
-    radial-gradient(ellipse 45% 55% at 32% 46%, color-mix(in srgb, var(--g) 26%, transparent), transparent 70%),
-    radial-gradient(ellipse 70% 60% at 70% 20%, color-mix(in srgb, var(--c) 14%, transparent), transparent 75%),
-    linear-gradient(to bottom, color-mix(in srgb, var(--c) 10%, #040705), #040705 80%);
+  /* 정령 색 색연필로 살짝 칠한 자리 */
+  background: radial-gradient(ellipse 30% 42% at 32% 50%, color-mix(in srgb, var(--g) 16%, transparent), transparent 70%);
   transition: transform 0.3s ease-out;
 }
 
-/* 원근이 걸린 바닥 격자 */
-.roomFloor {
+/* 노트 낙서 */
+.doodles {
   position: absolute;
-  left: -50%;
-  right: -50%;
-  top: 74%;
-  height: 160%;
-  transform-origin: 50% 0;
-  background-image:
-    linear-gradient(color-mix(in srgb, var(--g) 22%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--g) 22%, transparent) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 40%, transparent 70%);
+  inset: 0;
+  color: var(--ink);
+  pointer-events: none;
   transition: transform 0.3s ease-out;
 }
 
-.room[data-dark] .roomFloor {
-  background-image:
-    linear-gradient(rgba(170, 185, 210, 0.16) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(170, 185, 210, 0.16) 1px, transparent 1px);
-}
-
-/* 떠다니는 빛 알갱이 */
-.motes {
+.doodle {
   position: absolute;
-  inset: -80px;
-  /* 서로 다른 주기의 층을 겹쳐 규칙적인 격자처럼 보이지 않게 */
-  background-image:
-    radial-gradient(circle, color-mix(in srgb, var(--g) 70%, #fff) 1.5px, transparent 2.5px),
-    radial-gradient(circle, color-mix(in srgb, var(--g) 50%, transparent) 1px, transparent 2px),
-    radial-gradient(circle, color-mix(in srgb, var(--g) 40%, transparent) 2px, transparent 3.5px);
-  background-size: 337px 293px, 211px 257px, 523px 461px;
-  background-position: 20px 40px, 80px 10px, 140px 200px;
-  opacity: 0.45;
-  animation: drift 18s linear infinite;
-  transition: transform 0.3s ease-out;
+  opacity: 0.7;
 }
+
+.doodle[data-pos="star"] { top: 14%; left: 9%; width: 44px; transform: rotate(-12deg); }
+.doodle[data-pos="heart"] { top: 12%; right: 12%; width: 38px; transform: rotate(10deg); }
+.doodle[data-pos="leaf"] { bottom: 10%; left: 7%; width: 54px; transform: rotate(-8deg); }
+.doodle[data-pos="swirl"] { bottom: 14%; right: 9%; width: 64px; }
+.doodle[data-pos="spark"] { top: 46%; right: 5%; width: 28px; transform: rotate(18deg); }
+
+/* 마스킹테이프 */
+.tape {
+  position: absolute;
+  top: -6px;
+  width: 150px;
+  height: 32px;
+  opacity: 0.8;
+  background: repeating-linear-gradient(45deg, color-mix(in srgb, var(--g) 35%, #fff) 0 8px, color-mix(in srgb, var(--g) 18%, #fff) 8px 16px);
+  clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 16% 8%, 84% 0, 88% 10%, 92% 0, 96% 8%, 100% 0, 100% 100%, 95% 90%, 90% 100%, 85% 92%, 15% 100%, 10% 90%, 5% 100%, 0 92%);
+}
+
+.tape[data-pos="l"] { left: 22%; transform: rotate(-4deg); }
+.tape[data-pos="r"] { right: 24%; transform: rotate(5deg); background: repeating-linear-gradient(-45deg, #ffe08a 0 8px, #fff0bf 8px 16px); }
 
 .roomInner {
   position: relative;
@@ -228,7 +232,7 @@
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 0 30px color-mix(in srgb, var(--g) 35%, transparent));
+  filter: drop-shadow(4px 6px 0 rgba(38, 44, 39, 0.12));
 }
 
 .standing::after {
@@ -238,7 +242,7 @@
   width: 60%;
   height: 28px;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.6), transparent 70%);
+  background: radial-gradient(ellipse, rgba(38, 44, 39, 0.18), transparent 70%);
   z-index: -1;
 }
 
@@ -262,9 +266,11 @@
 }
 
 .roomTitle {
-  font-size: 13px;
-  letter-spacing: 0.25em;
-  color: color-mix(in srgb, var(--g) 75%, #c7d1c2);
+  font-family: var(--font-hand), sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--ink);
 }
 
 .roomName {
@@ -273,7 +279,10 @@
   font-weight: 400;
   font-size: clamp(44px, 6vw, 72px);
   line-height: 1.1;
-  text-shadow: 0 0 40px color-mix(in srgb, var(--g) 45%, transparent);
+  /* 형광펜 */
+  width: fit-content;
+  padding: 0 8px;
+  background: linear-gradient(transparent 58%, color-mix(in srgb, var(--g) 40%, transparent) 58% 92%, transparent 92%);
 }
 
 .traits {
@@ -288,7 +297,7 @@
 
 .traits li {
   padding-left: 16px;
-  border-left: 2px solid color-mix(in srgb, var(--g) 50%, transparent);
+  border-left: 3px solid color-mix(in srgb, var(--g) 60%, transparent);
 }
 
 .stats {
@@ -296,12 +305,12 @@
   gap: 40px;
   margin-top: 32px;
   padding-top: 20px;
-  border-top: 1px solid var(--line);
+  border-top: 2px dashed var(--line);
 }
 
 .stats dt {
   font-size: 11px;
-  color: color-mix(in srgb, var(--g) 70%, #b8c4b2);
+  color: var(--ink);
   letter-spacing: 0.2em;
 }
 
@@ -315,9 +324,12 @@
   position: absolute;
   top: 22px;
   left: 24px;
-  padding: 8px 16px;
-  border: 1px solid var(--line);
-  background: rgba(4, 7, 5, 0.6);
+  z-index: 1;
+  padding: 8px 18px;
+  border: 2px solid var(--text);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--text);
+  background: #fff;
   color: var(--text);
   font-size: 14px;
   cursor: pointer;
@@ -333,9 +345,10 @@
   width: 48px;
   height: 48px;
   margin-top: -24px;
-  border: 1px solid var(--line);
+  border: 2px solid var(--text);
   border-radius: 50%;
-  background: rgba(4, 7, 5, 0.5);
+  box-shadow: 3px 3px 0 var(--text);
+  background: #fff;
   color: var(--text);
   font-size: 28px;
   line-height: 1;
@@ -362,11 +375,20 @@
   50% { transform: translateY(-10px); }
 }
 
-@keyframes drift {
-  to { background-position: 20px -253px, 80px -247px, 140px -261px; }
-}
-
 @media (max-width: 760px) {
+  .room {
+    background:
+      linear-gradient(to right, transparent 20px, #f3a5b1 20px 22px, transparent 22px),
+      repeating-linear-gradient(to bottom, transparent 0 calc(var(--rule) - 1.5px), #c9dcf0 calc(var(--rule) - 1.5px) var(--rule)),
+      #fffdf5;
+  }
+
+  .doodle[data-pos="swirl"],
+  .doodle[data-pos="spark"],
+  .tape[data-pos="r"] {
+    display: none;
+  }
+
   .roomInner {
     grid-template-columns: 1fr;
     grid-template-rows: 45% auto;
@@ -396,8 +418,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .plane, .roomGlow, .roomFloor, .motes, .standing { transition: none; }
-  .face, .motes, .roomInner, .room { animation: none; }
+  .plane, .roomGlow, .doodles, .standing { transition: none; }
+  .face, .roomInner, .room { animation: none; }
 }
 
 /* ── 전투 능력치 ── */
@@ -417,7 +439,7 @@
   gap: 12px;
   font-size: 11px;
   letter-spacing: 0.2em;
-  color: color-mix(in srgb, var(--g) 70%, #b8c4b2);
+  color: var(--ink);
 }
 
 .combatHead span {
@@ -458,7 +480,7 @@
 }
 
 .combatGrid > div[data-top] b {
-  color: var(--g);
+  color: var(--ink);
 }
 
 /* 6칸짜리 눈금 위에 값만큼 채운다 */
@@ -466,7 +488,7 @@
   position: relative;
   flex: 1;
   height: 6px;
-  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0 calc(100% / 6 - 2px), transparent 0 calc(100% / 6));
+  background: repeating-linear-gradient(90deg, rgba(38, 44, 39, 0.1) 0 calc(100% / 6 - 2px), transparent 0 calc(100% / 6));
 }
 
 .bar::after {
@@ -475,11 +497,10 @@
   inset: 0;
   width: calc(var(--v) * 100%);
   background: repeating-linear-gradient(90deg, var(--g) 0 calc(100% / var(--v) / 6 - 2px), transparent 0 calc(100% / var(--v) / 6));
-  box-shadow: 0 0 8px color-mix(in srgb, var(--g) 50%, transparent);
 }
 
 .room[data-dark] .bar::after {
-  background: repeating-linear-gradient(90deg, #aab9d2 0 calc(100% / var(--v) / 6 - 2px), transparent 0 calc(100% / var(--v) / 6));
+  background: repeating-linear-gradient(90deg, #4a5468 0 calc(100% / var(--v) / 6 - 2px), transparent 0 calc(100% / var(--v) / 6));
 }
 
 @media (max-width: 760px) {
