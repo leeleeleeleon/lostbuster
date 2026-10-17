@@ -4,7 +4,7 @@
 
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import { createPortal } from "react-dom";
-import { SPIRITS, type Spirit } from "@/lib/spirits";
+import { SPIRITS, STAT_LABELS, STAT_MAX, type Spirit, type StatLabel } from "@/lib/spirits";
 import { DOORS, LOBBY, faceStyle, type Door } from "@/lib/rooms";
 import Reveal from "./Reveal";
 import styles from "./SpiritsSection.module.css";
@@ -201,6 +201,29 @@ export default function SpiritsSection() {
                     <dd>{spirit.weapon ?? "—"}</dd>
                   </div>
                 </dl>
+                <div className={styles.combat}>
+                  <p className={styles.combatHead}>
+                    전투 능력치
+                    <span>
+                      {spirit.combat.role} · {spirit.combat.line}
+                    </span>
+                  </p>
+                  <dl className={styles.combatGrid}>
+                    {(Object.keys(STAT_LABELS) as StatLabel[]).map((k) => {
+                      const v = spirit.combat.stats[k];
+                      const n = parseInt(String(v), 10);
+                      return (
+                        <div key={k} data-top={n >= STAT_MAX || undefined}>
+                          <dt>{STAT_LABELS[k]}</dt>
+                          <dd>
+                            <span className={styles.bar} style={{ "--v": n / STAT_MAX } as CSSProperties} />
+                            <b>{v}</b>
+                          </dd>
+                        </div>
+                      );
+                    })}
+                  </dl>
+                </div>
               </div>
             </div>
 

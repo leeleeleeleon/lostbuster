@@ -398,3 +398,93 @@
   .plane, .roomGlow, .roomFloor, .motes, .standing { transition: none; }
   .face, .motes, .roomInner, .room { animation: none; }
 }
+
+/* ── 전투 능력치 ── */
+.combat {
+  margin-top: 24px;
+}
+
+.combatHead {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: color-mix(in srgb, var(--g) 70%, #b8c4b2);
+}
+
+.combatHead span {
+  letter-spacing: 0.05em;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.combatGrid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 28px;
+}
+
+.combatGrid > div {
+  display: grid;
+  grid-template-columns: 2.6em 1fr;
+  align-items: center;
+}
+
+.combatGrid dt {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.combatGrid dd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.combatGrid b {
+  min-width: 1.6em;
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.combatGrid > div[data-top] b {
+  color: var(--g);
+}
+
+/* 6칸짜리 눈금 위에 값만큼 채운다 */
+.bar {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0 calc(100% / 6 - 2px), transparent 0 calc(100% / 6));
+}
+
+.bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: calc(var(--v) * 100%);
+  background: repeating-linear-gradient(90deg, var(--g) 0 calc(100% / var(--v) / 6 - 2px), transparent 0 calc(100% / var(--v) / 6));
+  box-shadow: 0 0 8px color-mix(in srgb, var(--g) 50%, transparent);
+}
+
+.room[data-dark] .bar::after {
+  background: repeating-linear-gradient(90deg, #aab9d2 0 calc(100% / var(--v) / 6 - 2px), transparent 0 calc(100% / var(--v) / 6));
+}
+
+@media (max-width: 760px) {
+  .combatGrid { gap: 8px 18px; }
+}
+
+/* 소개가 긴 정령은 능력치까지 넣으면 낮은 화면에서 넘칠 수 있다 */
+.info {
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+@media (max-width: 760px) {
+  .info { max-height: none; overflow: visible; }
+}
