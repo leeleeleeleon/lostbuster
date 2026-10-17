@@ -1,6 +1,14 @@
 .section {
   padding: clamp(72px, 10vw, 140px) 0;
   background: #120c1c;
+  /* 어두운 베일 구역이라 밝은 글자와 금색 강조를 여기서만 쓴다 */
+  --cream: #fff8e4;
+  --gold: #ffd84a;
+  --text: #fff8e4;
+  --ink: #fff8e4;
+  --paper: #120c1c;
+  --win: #120c1c;
+  color: var(--text);
 }
 
 .head {

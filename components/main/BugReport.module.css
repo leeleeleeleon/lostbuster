@@ -40,7 +40,7 @@
   display: grid;
   gap: 6px;
   justify-items: start;
-  box-shadow: 0 0 0 3px var(--cream), 0 0 0 6px var(--navy);
+  box-shadow: 0 0 0 2px var(--ink);
 }
 
 .title {
@@ -51,7 +51,8 @@
 }
 
 .email {
-  color: var(--leaf);
+  color: var(--text);
+  text-decoration: underline;
   word-break: break-all;
 }
 

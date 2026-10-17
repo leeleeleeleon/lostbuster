@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import AmbientCanvas from "./AmbientCanvas";
 import BugReport from "./BugReport";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -24,7 +23,6 @@ export default function MainSite({ fromIntro, onReplayIntro }: Props) {
 
   return (
     <div className={styles.site}>
-      <AmbientCanvas className={styles.fireflies} fireflyDensity={0.35} />
       <Header onLogoClick={onReplayIntro} />
       <main>
         <Hero />

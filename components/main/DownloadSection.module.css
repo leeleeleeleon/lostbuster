@@ -5,6 +5,9 @@
   display: grid;
   place-items: center;
   padding: clamp(80px, 12vw, 140px) 0;
+  /* 어두운 숲 장면 위라서 제목과 글씨는 흰색 */
+  --ink: #ffffff;
+  --muted: #d9e2d4;
 }
 
 /* ── 3D 숲 ── */
@@ -148,8 +151,8 @@ a.button:active {
 }
 
 .links a:hover {
-  color: var(--text);
-  border-color: var(--gold);
+  color: #ffffff;
+  border-color: #ffffff;
 }
 
 @keyframes bounce {

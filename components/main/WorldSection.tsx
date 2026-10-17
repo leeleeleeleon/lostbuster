@@ -43,7 +43,7 @@ const SPIRIT: Icon = {
     "...k...k...",
     "..kk...kk..",
   ],
-  palette: { k: "#fff8e6", w: "#3a2614", p: "#d6336c" },
+  palette: { k: "#3a2614", w: "#fff8e6", p: "#d6336c" },
 };
 
 const SKULL: Icon = {

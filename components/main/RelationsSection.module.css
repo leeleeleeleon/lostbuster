@@ -25,7 +25,7 @@
   gap: 6px;
   padding: 12px 4px 10px;
   border: 1px solid var(--line);
-  background: rgba(14, 19, 40, 0.5);
+  background: var(--win);
   color: var(--muted);
   font-size: 13px;
   cursor: pointer;
@@ -34,7 +34,7 @@
 
 .pick:hover:not(:disabled),
 .pick[data-active] {
-  border-color: color-mix(in srgb, var(--g) 70%, transparent);
+  border-color: var(--ink);
   color: var(--text);
 }
 
@@ -206,7 +206,7 @@
 }
 
 .item[data-active] {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(26, 26, 26, 0.04);
 }
 
 .item .sm {
@@ -245,7 +245,7 @@
   margin-top: 4px;
   font-size: 14px;
   line-height: 1.75;
-  color: #c7d1c2;
+  color: var(--muted);
   word-break: keep-all;
 }
 

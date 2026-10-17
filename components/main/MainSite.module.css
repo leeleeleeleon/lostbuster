@@ -1,9 +1,7 @@
 .site {
   position: relative;
   min-height: 100vh;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(74, 159, 240, 0.12), transparent 70%),
-    var(--bg);
+  background: var(--bg);
 }
 
 .fireflies {
@@ -27,7 +25,7 @@
   inset: 0;
   z-index: 100;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 55%, #ffffff 0%, #c6e8fc 35%, #4a9ff0 75%, #1b2240 100%);
+  background: radial-gradient(circle at 50% 55%, #ffffff 0%, #ffffff 45%, #fafaf7 100%);
   animation: fadeOut 1.4s ease-out forwards;
 }
 

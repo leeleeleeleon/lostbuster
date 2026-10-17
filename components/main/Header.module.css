@@ -38,7 +38,7 @@
 }
 
 .nav a {
-  color: var(--cream);
+  color: var(--text);
 }
 
 .nav a:hover,
@@ -59,7 +59,7 @@
 }
 
 .nav .ext {
-  color: #9ee7ff;
+  color: var(--muted);
 }
 
 .nav .soon {
@@ -87,7 +87,7 @@
   left: 8px;
   right: 8px;
   height: 3px;
-  background: var(--cream);
+  background: var(--ink);
   transition: transform 0.2s steps(2);
 }
 
@@ -108,8 +108,7 @@
     gap: 0;
     background: var(--win);
     box-shadow:
-      0 0 0 3px var(--cream),
-      0 0 0 6px var(--navy);
+      0 0 0 2px var(--ink);
     max-height: 0;
     overflow: hidden;
     visibility: hidden;
