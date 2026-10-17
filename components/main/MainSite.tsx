@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import AmbientCanvas from "./AmbientCanvas";
+import BugReport from "./BugReport";
 import Footer from "./Footer";
 import Header from "./Header";
 import Hero from "./Hero";
@@ -34,6 +35,7 @@ export default function MainSite({ fromIntro, onReplayIntro }: Props) {
         <SpoilerSection />
       </main>
       <Footer />
+      <BugReport />
       {fromIntro && <div className={styles.flashOut} aria-hidden="true" />}
     </div>
   );

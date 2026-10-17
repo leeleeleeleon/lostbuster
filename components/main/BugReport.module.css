@@ -1,0 +1,70 @@
+.wrap {
+  position: fixed;
+  right: 0;
+  bottom: 24px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.trigger {
+  display: block;
+  width: 96px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.trigger:hover {
+  transform: translateX(-4px) rotate(-2deg);
+}
+
+.trigger img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.popup {
+  margin-right: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-3);
+  color: var(--text);
+  font-size: 13px;
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.title {
+  margin: 0;
+  color: var(--gold);
+  font-family: var(--font-serif), serif;
+}
+
+.email {
+  color: var(--leaf);
+  word-break: break-all;
+}
+
+.copy {
+  padding: 3px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg-2);
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .trigger { width: 72px; }
+  .wrap { bottom: 16px; }
+}
