@@ -1,0 +1,156 @@
+.section {
+  padding: clamp(56px, 8vw, 96px) 0 clamp(72px, 10vw, 140px);
+}
+
+.inner {
+  max-width: 820px;
+}
+
+/* 버전마다 한 줄: 왼쪽 버전·날짜, 오른쪽 내용 */
+.patches {
+  list-style: none;
+  margin-top: 36px;
+  border-top: 1px solid var(--ink);
+}
+
+.patch {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.version {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-pixel), monospace;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.latest {
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 400;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.date {
+  font-size: 13px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.groupTitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.items li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.items li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.72em;
+  width: 6px;
+  height: 6px;
+  background: var(--ink);
+}
+
+/* 유의사항: 눌러서 펼친다 */
+.notice {
+  margin-top: 40px;
+  border: 1px solid var(--ink);
+}
+
+.notice summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 16px;
+}
+
+.notice summary::-webkit-details-marker {
+  display: none;
+}
+
+.notice summary::before {
+  content: "▶";
+  font-size: 11px;
+  transition: transform 0.15s;
+}
+
+.notice[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.notice summary:hover,
+.notice summary:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+  outline: none;
+}
+
+.count {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.notice summary:hover .count,
+.notice summary:focus-visible .count {
+  color: inherit;
+}
+
+.notice .items {
+  padding: 4px 20px 22px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+@media (max-width: 640px) {
+  .patch {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notice summary::before { transition: none; }
+}

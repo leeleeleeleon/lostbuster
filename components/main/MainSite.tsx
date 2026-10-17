@@ -5,6 +5,7 @@ import BugReport from "./BugReport";
 import Footer from "./Footer";
 import Header from "./Header";
 import Hero from "./Hero";
+import PatchNotes from "./PatchNotes";
 import DownloadSection from "./DownloadSection";
 import RelationsSection from "./RelationsSection";
 import SpiritsSection from "./SpiritsSection";
@@ -30,6 +31,7 @@ export default function MainSite({ fromIntro, onReplayIntro }: Props) {
         <SpiritsSection />
         <RelationsSection />
         <DownloadSection />
+        <PatchNotes />
         <SpoilerSection />
       </main>
       <Footer />
