@@ -213,7 +213,7 @@ export default function SpiritsSection() {
               </div>
 
               <div className={styles.info}>
-                <p className={styles.roomTitle}>{spirit.title}</p>
+                {spirit.title && <p className={styles.roomTitle}>{spirit.title}</p>}
                 <h3 className={styles.roomName}>{spirit.name}</h3>
                 <ul className={styles.traits}>
                   {spirit.traits.map((t) => (

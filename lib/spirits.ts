@@ -46,7 +46,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "magenta",
     name: "마젠타",
-    title: "마젠타의 천",
+    title: "",
     color: "#d23c98",
     glow: "#ff6cc4",
     standing: "/standings/magenta.png",
@@ -58,7 +58,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "oyu",
     name: "오유",
-    title: "연두의 천 · 주인공조",
+    title: "주인공조",
     color: "#9ccf4a",
     glow: "#c4f57a",
     standing: "/standings/oyu.png",
@@ -71,7 +71,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "gungun",
     name: "군군",
-    title: "검정의 천 · 주인공조",
+    title: "주인공조",
     color: "#17171a",
     glow: "#7d8ba0",
     standing: "/standings/gungun.png",
@@ -85,7 +85,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "iden",
     name: "이든",
-    title: "흰색의 천",
+    title: "",
     color: "#f1eee4",
     glow: "#ffffff",
     standing: "/standings/iden.png",
@@ -97,7 +97,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "ire",
     name: "이레",
-    title: "노랑의 천",
+    title: "",
     color: "#efc42f",
     glow: "#ffe06a",
     standing: "/standings/ire.png",
@@ -109,7 +109,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "jamo",
     name: "자모",
-    title: "빨강의 천",
+    title: "",
     color: "#c8313a",
     glow: "#ff5a4a",
     standing: "/standings/jamo.png",
@@ -121,7 +121,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "i",
     name: "I",
-    title: "흰색의 천",
+    title: "",
     color: "#e6ecef",
     glow: "#d8f2ff",
     standing: "/standings/i.png",
@@ -137,7 +137,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "innocent",
     name: "이노센트",
-    title: "연분홍의 천",
+    title: "",
     color: "#f2b4c6",
     glow: "#ffd2e0",
     standing: "/standings/innocent.png",
@@ -149,7 +149,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "welsiet",
     name: "웰시엣",
-    title: "보라의 천",
+    title: "",
     color: "#7a48b8",
     glow: "#b583ff",
     standing: "/standings/welsiet.png",
@@ -161,7 +161,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "cyan",
     name: "시안",
-    title: "시안의 천",
+    title: "",
     color: "#38c3d4",
     glow: "#7cf0ff",
     standing: "/standings/cyan.png",

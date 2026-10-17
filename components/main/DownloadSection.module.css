@@ -1,69 +1,215 @@
 .section {
-  padding: clamp(80px, 12vw, 160px) 0;
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(640px, 90vh, 860px);
+  display: grid;
+  place-items: center;
+  padding: clamp(80px, 12vw, 140px) 0;
+}
+
+/* ── 눕힌 지도 ── */
+.stage {
+  position: absolute;
+  z-index: 0;
+  isolation: isolate;
+  overflow: hidden;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  perspective: 1400px;
+  perspective-origin: 50% 20%;
+}
+
+.plane {
+  position: relative;
+  width: min(1180px, 130vw);
+  aspect-ratio: 1644 / 842;
+  transform-style: preserve-3d;
+  transform: rotateX(56deg) rotateZ(-9deg) translateY(4%);
+  animation: hover 9s ease-in-out infinite;
+}
+
+.layer,
+.top {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* 아래층일수록 어둡게 → 흙으로 된 옆면 */
+.layer {
+  transform: translateZ(calc(var(--z) * -1.8px));
+  filter: brightness(calc(0.62 - var(--z) * 0.022)) sepia(0.7) saturate(1.4) hue-rotate(-12deg);
+}
+
+.layer:first-child {
+  filter: brightness(0) blur(6px);
+  opacity: 0.6;
+  transform: translateZ(-80px) scale(1.02);
+}
+
+.top {
+  filter: saturate(1.1) brightness(0.95);
+}
+
+/* 글씨가 잘 보이도록 가운데를 살짝 어둡게, 가장자리는 배경에 녹인다 */
+.veil {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
   background:
-    radial-gradient(ellipse 60% 45% at 50% 60%, rgba(40, 90, 58, 0.28), transparent 70%);
+    radial-gradient(ellipse 34% 30% at 50% 50%, rgba(5, 10, 7, 0.82), rgba(5, 10, 7, 0.45) 60%, transparent 100%),
+    linear-gradient(to bottom, var(--bg), transparent 22%, transparent 78%, var(--bg));
 }
 
 .inner {
+  position: relative;
+  z-index: 2;
   text-align: center;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
 }
 
 .lead {
   margin-top: 14px;
-  color: var(--muted);
+  color: #d9e2d4;
   font-size: 15px;
 }
 
-.button {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  margin-top: 44px;
-  min-width: min(320px, 100%);
-  padding: 20px 40px;
-  border: 1px solid rgba(203, 181, 125, 0.55);
-  background: rgba(203, 181, 125, 0.12);
-  color: #efe3c2;
-  font-size: 17px;
-  letter-spacing: 0.2em;
-  transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+/* ── 출전 버튼 ── */
+.sortieWrap {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  margin-top: 48px;
+  filter: drop-shadow(0 0 22px rgba(240, 196, 92, 0.45)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.55));
+  animation: pulse 2.4s ease-in-out infinite;
 }
 
-a.button:hover {
-  background: var(--gold);
-  color: #12160f;
-  box-shadow: 0 0 40px rgba(203, 181, 125, 0.35);
+.ring {
+  position: absolute;
+  inset: -6px -14px;
+  border: 2px solid rgba(255, 214, 120, 0.7);
+  clip-path: polygon(22px 0, calc(100% - 22px) 0, 100% 50%, calc(100% - 22px) 100%, 22px 100%, 0 50%);
+  animation: ripple 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+.ring[data-late] {
+  animation-delay: 1.2s;
+}
+
+.sortie {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  min-width: min(380px, 86vw);
+  padding: 16px 56px 14px;
+  overflow: hidden;
+  color: #2a1a06;
+  text-shadow: 0 1px 0 rgba(255, 245, 210, 0.6);
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.45), transparent 46%, rgba(0, 0, 0, 0.12) 54%, transparent),
+    linear-gradient(100deg, #f7d77a, #e3a93c 45%, #f5cf6a 70%, #c98a26);
+  clip-path: polygon(22px 0, calc(100% - 22px) 0, 100% 50%, calc(100% - 22px) 100%, 22px 100%, 0 50%);
+  transition: transform 0.2s ease;
+}
+
+/* 안쪽 테두리 */
+.sortie::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1.5px solid rgba(70, 40, 6, 0.55);
+  clip-path: polygon(18px 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 18px 100%, 0 50%);
+  pointer-events: none;
+}
+
+/* 지나가는 빛 */
+.sortie::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -40%;
+  width: 30%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+  transform: skewX(-20deg);
+  animation: shine 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.sortieSub {
+  font-family: var(--font-cinzel), serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  color: rgba(60, 34, 4, 0.75);
+}
+
+.sortieMain {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-cute), sans-serif;
+  font-size: clamp(30px, 4vw, 40px);
+  line-height: 1.15;
+  letter-spacing: 0.12em;
+}
+
+.chev {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.6em;
+  letter-spacing: -0.1em;
+  color: rgba(90, 50, 6, 0.7);
+  transition: transform 0.25s ease;
+}
+
+.sortieSmall {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: rgba(60, 34, 4, 0.8);
+}
+
+a.sortie:hover {
+  transform: scale(1.05);
+}
+
+a.sortie:hover .chev:first-child {
+  transform: translateX(6px);
+}
+
+a.sortie:hover .chev:last-child {
+  transform: translateX(-6px);
+}
+
+a.sortie:hover::after {
+  animation-duration: 0.9s;
 }
 
 .disabled {
-  opacity: 0.6;
+  filter: grayscale(0.8);
   cursor: default;
-}
-
-.button small {
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: 0.1em;
-}
-
-a.button:hover small {
-  color: inherit;
 }
 
 .links {
   list-style: none;
-  margin-top: 32px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px 28px;
   font-size: 14px;
-  color: var(--muted);
+  color: #c9d3c4;
 }
 
 .links a {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding-bottom: 2px;
   transition: color 0.2s, border-color 0.2s;
 }
@@ -71,4 +217,38 @@ a.button:hover small {
 .links a:hover {
   color: var(--text);
   border-color: var(--gold);
+}
+
+@keyframes hover {
+  0%, 100% { transform: rotateX(56deg) rotateZ(-9deg) translateY(4%) translateZ(0); }
+  50% { transform: rotateX(56deg) rotateZ(-7deg) translateY(4%) translateZ(18px); }
+}
+
+@keyframes pulse {
+  0%, 100% { filter: drop-shadow(0 0 16px rgba(240, 196, 92, 0.35)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.55)); }
+  50% { filter: drop-shadow(0 0 30px rgba(255, 210, 110, 0.7)) drop-shadow(0 10px 0 rgba(0, 0, 0, 0.55)); }
+}
+
+@keyframes ripple {
+  from { transform: scale(1); opacity: 0.9; }
+  to { transform: scale(1.25, 1.6); opacity: 0; }
+}
+
+@keyframes shine {
+  0%, 55% { left: -40%; }
+  100% { left: 130%; }
+}
+
+@media (max-width: 760px) {
+  .plane {
+    width: 170vw;
+  }
+
+  .sortie {
+    padding: 14px 40px 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plane, .sortieWrap, .ring, .sortie::after { animation: none; }
 }
