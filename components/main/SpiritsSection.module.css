@@ -1,6 +1,14 @@
 .section {
   padding: clamp(72px, 10vw, 140px) 0;
-  background: var(--bg-2);
+  /* 정령들의 집은 검은 바탕. 이 안에서만 글자와 창을 밝게 뒤집는다 */
+  background: #0b0b0b;
+  --ink: #ffffff;
+  --paper: #0b0b0b;
+  --text: #ffffff;
+  --muted: #a3a39d;
+  --win: #1a1a1a;
+  --line: rgba(255, 255, 255, 0.18);
+  color: var(--text);
 }
 
 .lead {
