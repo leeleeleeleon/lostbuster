@@ -1,0 +1,48 @@
+.section {
+  padding: clamp(80px, 12vw, 160px) 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 100%, rgba(40, 90, 58, 0.28), transparent 70%);
+}
+
+.inner {
+  text-align: center;
+}
+
+.lead {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.button {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 44px;
+  min-width: min(320px, 100%);
+  padding: 20px 40px;
+  border: 1px solid rgba(203, 181, 125, 0.55);
+  background: rgba(203, 181, 125, 0.12);
+  color: #efe3c2;
+  font-size: 17px;
+  letter-spacing: 0.2em;
+  transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+}
+
+a.button:hover {
+  background: var(--gold);
+  color: #12160f;
+  box-shadow: 0 0 40px rgba(203, 181, 125, 0.35);
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.button small {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}

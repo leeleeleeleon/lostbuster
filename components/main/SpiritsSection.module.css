@@ -39,6 +39,12 @@
   transform: translateY(-4px);
 }
 
+/* 주인공 카드는 상징색 테두리로 은은하게 구분 */
+.card[data-lead] {
+  border-color: color-mix(in srgb, var(--g) 40%, transparent);
+  box-shadow: inset 0 0 40px color-mix(in srgb, var(--g) 12%, transparent);
+}
+
 /* 카드 위쪽에 매달린 천 */
 .ribbon {
   position: absolute;
@@ -76,14 +82,6 @@
   filter: blur(1px);
   animation: float 6s ease-in-out infinite;
   opacity: 0.85;
-}
-
-.romaji {
-  position: relative;
-  font-family: var(--font-cinzel), serif;
-  font-size: 10px;
-  letter-spacing: 0.35em;
-  color: var(--muted);
 }
 
 .name {
@@ -124,7 +122,6 @@
   animation: pop 0.4s ease;
 }
 
-.modal .romaji,
 .modal .title {
   display: block;
 }

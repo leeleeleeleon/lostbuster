@@ -38,7 +38,7 @@ export function createRibbons(anchors: { x: number; y: number }[], unit: number,
       width: unit * 0.024,
       color: hexToRgb(s.color),
       glow: s.glow,
-      dark: s.id === "geuneul",
+      dark: !!s.dark,
       phase: i * 1.37,
     };
   });

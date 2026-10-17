@@ -24,7 +24,7 @@ export default function WorldSection() {
     <section id="world" className={styles.section}>
       <div className="container">
         <Reveal>
-          <p className="eyebrow">WORLD</p>
+          <p className="eyebrow">세계관</p>
           <h2 className="section-title">세계수가 지키는 숲</h2>
         </Reveal>
         <div className={styles.chapters}>

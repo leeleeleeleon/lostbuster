@@ -7,7 +7,7 @@ const NAV = [
   { href: "#world", label: "세계관" },
   { href: "#spirits", label: "정령" },
   { href: "#news", label: "소식" },
-  { href: "#preregister", label: "사전예약" },
+  { href: "#download", label: "다운로드" },
 ];
 
 export default function Header({ onLogoClick }: { onLogoClick: () => void }) {

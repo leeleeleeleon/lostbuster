@@ -55,9 +55,9 @@ input {
 }
 
 .eyebrow {
-  font-family: var(--font-cinzel), serif;
-  font-size: 12px;
-  letter-spacing: 0.45em;
+  font-family: var(--font-serif), serif;
+  font-size: 14px;
+  letter-spacing: 0.3em;
   color: var(--gold);
 }
 

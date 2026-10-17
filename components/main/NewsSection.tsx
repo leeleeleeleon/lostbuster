@@ -8,7 +8,7 @@ export default function NewsSection() {
       <div className="container">
         <Reveal className={styles.head}>
           <div>
-            <p className="eyebrow">NEWS</p>
+            <p className="eyebrow">소식</p>
             <h2 className="section-title">숲의 소식</h2>
           </div>
           <a href="#news" className={styles.more}>전체 보기 →</a>
