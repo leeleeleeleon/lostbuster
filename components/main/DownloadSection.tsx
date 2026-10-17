@@ -6,49 +6,56 @@ import styles from "./DownloadSection.module.css";
 
 const MAP = "/maps/world.png";
 // 같은 지도를 조금씩 아래로 겹쳐 쌓아 땅의 두께를 만든다
-const DEPTH = 16;
+const DEPTH = 24;
 
-function Sortie() {
+const ARROW = {
+  rows: ["..##..", "..##..", "..##..", "######", ".####.", "..##..", "......", "######"],
+};
+
+function Arrow() {
+  return (
+    <svg className={styles.arrow} viewBox="0 0 6 8" shapeRendering="crispEdges" aria-hidden="true">
+      {ARROW.rows.flatMap((r, y) => [...r].map((c, x) => (c === "#" ? <rect key={`${x}-${y}`} x={x} y={y} width={1} height={1} /> : null)))}
+    </svg>
+  );
+}
+
+/** 도트 게임 버튼처럼 눌리는 다운로드 버튼 */
+function DownloadButton() {
   const inner = (
     <>
-      <span className={styles.sortieSub}>READY · SORTIE</span>
-      <span className={styles.sortieMain}>
-        <span className={styles.chev} aria-hidden="true">›››</span>
-        출전하기
-        <span className={styles.chev} aria-hidden="true">‹‹‹</span>
+      <Arrow />
+      <span className={styles.label}>
+        <span className={styles.main}>DOWNLOAD</span>
+        <span className={styles.small}>{DOWNLOAD_URL ? "게임 다운로드" : "게임 다운로드 · 준비 중"}</span>
       </span>
-      <span className={styles.sortieSmall}>{DOWNLOAD_URL ? "게임 다운로드" : "게임 다운로드 · 준비 중"}</span>
     </>
   );
-  return (
-    <div className={styles.sortieWrap}>
-      <span className={styles.ring} aria-hidden="true" />
-      <span className={styles.ring} data-late aria-hidden="true" />
-      {DOWNLOAD_URL ? (
-        <a href={DOWNLOAD_URL} className={styles.sortie} target="_blank" rel="noopener noreferrer">
-          {inner}
-        </a>
-      ) : (
-        <span className={`${styles.sortie} ${styles.disabled}`} aria-disabled="true">
-          {inner}
-        </span>
-      )}
-    </div>
+  return DOWNLOAD_URL ? (
+    <a href={DOWNLOAD_URL} className={styles.button} target="_blank" rel="noopener noreferrer">
+      {inner}
+    </a>
+  ) : (
+    <span className={`${styles.button} ${styles.disabled}`} aria-disabled="true">
+      {inner}
+    </span>
   );
 }
 
 export default function DownloadSection() {
   return (
     <section id="download" className={styles.section}>
-      {/* 지도를 눕혀 떠 있는 섬처럼 */}
-      <div className={styles.stage} aria-hidden="true">
-        <div className={styles.plane}>
-          {Array.from({ length: DEPTH }, (_, i) => (
-            <img key={i} src={MAP} alt="" className={styles.layer} style={{ "--z": DEPTH - i } as CSSProperties} />
-          ))}
-          <img src={MAP} alt="" className={styles.top} />
+      {/* 지도를 눕혀 떠 있는 섬처럼. 화면에 들어오면 아래에서 솟아오른다 */}
+      <Reveal className={styles.stage}>
+        <div className={styles.plane} aria-hidden="true">
+          <div className={styles.float}>
+            {Array.from({ length: DEPTH }, (_, i) => (
+              <img key={i} src={MAP} alt="" className={styles.layer} style={{ "--z": DEPTH - i } as CSSProperties} />
+            ))}
+            <img src={MAP} alt="" className={styles.top} />
+          </div>
         </div>
-      </div>
+      </Reveal>
       <div className={styles.veil} aria-hidden="true" />
 
       <div className={`container ${styles.inner}`}>
@@ -58,7 +65,7 @@ export default function DownloadSection() {
           <p className={styles.lead}>지금 바로 숲으로 들어가세요.</p>
         </Reveal>
         <Reveal delay={120}>
-          <Sortie />
+          <DownloadButton />
         </Reveal>
         <Reveal delay={200}>
           <ul className={styles.links}>
