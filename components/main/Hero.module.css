@@ -1,220 +1,145 @@
+/* 고른 정령의 색으로 화면을 칠하고, 그 정령 그림을 크게 세운다 */
 .hero {
   position: relative;
   min-height: 100vh;
   min-height: 100svh;
-  padding: 110px 16px 28px;
+  overflow: hidden;
+  background: var(--c);
+  color: var(--ink);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* 뒤에 깔리는 큰 외곽선 글자 */
+.giant {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -54%);
+  font-family: var(--font-en), monospace;
+  font-size: clamp(64px, 15vw, 260px);
+  line-height: 0.95;
+  text-align: center;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: clamp(1px, 0.18vw, 3px) var(--ink);
+  opacity: 0.18;
+  pointer-events: none;
+  user-select: none;
+}
+
+.stage {
+  position: absolute;
+  inset: 84px 0 0;
+}
+
+.art {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: 50% 100%;
+  image-rendering: auto;
+  opacity: 0;
+  transform: translate(calc(-50% + 3vw), 0);
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.art.on {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* 왼쪽 아래 구석: 제목과 다운로드 */
+.corner {
+  position: absolute;
+  left: clamp(16px, 3vw, 40px);
+  bottom: clamp(16px, 3vw, 40px);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  overflow: hidden;
-  background: #c6e8fc;
-  color: var(--navy);
+  align-items: flex-start;
+  gap: 14px;
 }
 
-/* 192×108 캔버스를 화면에 꽉 채워 늘린다. 땅이 잘리지 않게 아래 기준 */
-.sky {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 100%;
-}
-
-.copy,
-.lineup,
-.windows {
-  position: relative;
-}
-
-.copy {
-  text-align: center;
-}
-
-.start {
-  font-family: var(--font-en), monospace;
-  font-size: clamp(12px, 1.3vw, 16px);
-  letter-spacing: 0.3em;
-  margin-right: -0.3em;
-  color: var(--navy);
-  animation: blink 1.2s steps(2) infinite;
-}
-
-/* 금색 글자 + 남색 4방향 픽셀 외곽선 + 계단 그림자 */
 .title {
   font-family: var(--font-pixel), monospace;
   font-weight: 700;
-  font-size: clamp(44px, 8.4vw, 112px);
-  line-height: 1.1;
-  margin: 10px 0 14px;
-  color: var(--gold);
-  --o: clamp(3px, 0.45vw, 6px);
-  text-shadow:
-    var(--o) 0 0 var(--navy),
-    calc(var(--o) * -1) 0 0 var(--navy),
-    0 var(--o) 0 var(--navy),
-    0 calc(var(--o) * -1) 0 var(--navy),
-    calc(var(--o) * 2) calc(var(--o) * 2) 0 var(--navy);
+  font-size: clamp(22px, 2.6vw, 36px);
+  line-height: 1;
+  color: var(--ink);
 }
 
-.sub {
-  display: inline-block;
-  padding: 2px 12px;
-  font-size: clamp(13px, 1.5vw, 17px);
-  color: var(--navy);
-  background: rgba(255, 248, 228, 0.82);
+.cta {
+  padding: 10px 20px;
+  font-size: clamp(13px, 1.2vw, 15px);
 }
 
-/* 정령 한 줄. 스탠딩은 모두 같은 배율이라 높이를 맞추면 키 차이가 그대로 보인다 */
-.lineup {
-  list-style: none;
-  width: min(1240px, 100%);
-  margin-top: auto;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  --h: clamp(130px, 15vw, 210px);
-}
-
-.lineup li {
-  margin: 0 -0.6%;
-}
-
-.lineup li:hover {
-  position: relative;
-  z-index: 1;
-}
-
-.member {
+/* 오른쪽 아래 구석: 얼굴 칸 */
+.pick {
+  position: absolute;
+  right: clamp(16px, 3vw, 40px);
+  bottom: clamp(16px, 3vw, 40px);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.now {
+  font-family: var(--font-pixel), monospace;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.party {
+  display: grid;
+  grid-template-columns: repeat(10, auto);
   gap: 6px;
-  animation: rise 0.6s steps(4) backwards;
-  animation-delay: calc(var(--i) * 70ms + 150ms);
+  padding: 8px;
 }
 
-.face {
-  width: 96px;
+.chip {
+  width: clamp(36px, 3.6vw, 52px);
   aspect-ratio: 1;
-  background-color: var(--cream);
-  transition: transform 0.15s steps(2);
-}
-
-.standing {
-  display: block;
-  height: var(--h);
-  width: auto;
-  max-width: none;
-  transition: transform 0.15s steps(2);
-}
-
-.name {
-  font-size: clamp(11px, 1.1vw, 14px);
-  padding: 1px 6px;
-  color: var(--cream);
+  padding: 3px;
+  border: 0;
   background: var(--navy);
-  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.12s steps(2);
 }
 
-.member:hover .face,
-.member:hover .standing,
-.member:focus-visible .standing {
-  transform: translateY(-8px);
+.chip span {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
-.member:hover .name,
-.member:focus-visible .name {
-  color: var(--navy);
+.chip:hover {
+  transform: translateY(-3px);
+}
+
+.chip.on {
   background: var(--gold);
 }
 
-.member:focus-visible {
-  outline: none;
+.chip:focus-visible {
+  outline: 3px solid var(--cream);
+  outline-offset: 1px;
 }
 
-.windows {
-  width: min(1160px, 100%);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 16px;
-}
-
-.menu {
-  display: flex;
-  flex-direction: column;
-  padding: 12px 22px 12px 14px;
-  font-size: clamp(14px, 1.4vw, 17px);
-  line-height: 1.8;
-}
-
-.menu a {
-  display: flex;
-  gap: 8px;
-  outline: none;
-}
-
-.menu a::before {
-  content: "▶";
-  color: var(--gold);
-  visibility: hidden;
-}
-
-.menu a.on {
-  color: var(--gold);
-}
-
-.menu a.on::before {
-  visibility: visible;
-}
-
-.talk {
-  width: min(400px, 100%);
-  padding: 12px 18px;
-  font-size: clamp(13px, 1.3vw, 16px);
-  line-height: 1.6;
-  min-height: 92px;
-}
-
-.talk small {
-  display: block;
-  color: var(--gold);
-  font-size: 0.85em;
-}
-
-.talk p {
-  word-break: keep-all;
-}
-
-.caret {
-  animation: blink 1s steps(2) infinite;
-}
-
-@keyframes rise {
-  from { opacity: 0; transform: translateY(16px); }
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
+/* 좁은 화면: 얼굴 칸은 5개씩 두 줄, 제목은 그 위 */
 @media (max-width: 760px) {
-  .hero { padding-top: 96px; }
-  .lineup {
-    flex-wrap: wrap;
-    row-gap: 8px;
-    --h: 24vw;
+  .stage { inset: 76px 0 150px; }
+  .party { grid-template-columns: repeat(5, auto); }
+  .corner {
+    bottom: auto;
+    top: 84px;
   }
-  .windows {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .talk { width: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .member, .start, .caret { animation: none; }
+  .hero, .art, .chip { transition: none; }
 }

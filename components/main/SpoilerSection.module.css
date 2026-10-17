@@ -68,6 +68,8 @@
   writing-mode: vertical-rl;
   font-size: clamp(18px, 2vw, 26px);
   color: var(--cream);
+  /* 연한 상징색 위에서도 읽히게 픽셀 외곽선 */
+  text-shadow: 2px 0 0 #120c1c, -2px 0 0 #120c1c, 0 2px 0 #120c1c, 0 -2px 0 #120c1c;
   white-space: nowrap;
   transition: opacity 0.2s;
 }
