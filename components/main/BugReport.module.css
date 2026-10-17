@@ -1,10 +1,12 @@
+/* 화면 오른쪽 위, 헤더 바로 아래. 아래쪽 얼굴 칸을 가리지 않게 한다 */
 .wrap {
   position: fixed;
   right: 0;
-  bottom: 24px;
-  z-index: 50;
+  top: 84px;
+  /* 헤더(20)의 펼친 메뉴가 위에 오도록 그보다 낮게 */
+  z-index: 19;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: flex-end;
   gap: 8px;
 }
@@ -65,5 +67,5 @@
 
 @media (max-width: 640px) {
   .trigger { width: 72px; }
-  .wrap { bottom: 16px; }
+  .wrap { top: 76px; }
 }

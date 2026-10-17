@@ -1,5 +1,5 @@
 // 스포일러 섹션의 악당들. 사진은 public/villains/<id>.png 에 넣으면 자동으로 뜬다.
-// color 는 캐릭터 설정화에서 뽑은 상징색이다. 군쨩만 아직 임시값.
+// color 는 캐릭터 설정화에서 뽑은 상징색이다.
 export type Villain = {
   id: string;
   name: string;
@@ -17,6 +17,6 @@ export const VILLAINS: Villain[] = [
   { id: "soda", name: "소다", color: "#9fd8ee", desc: "공개된 정보 없음.", tags: [] },
   // 파란 촉수
   { id: "deguise", name: "디가이스", color: "#2f6bea", desc: "공개된 정보 없음.", tags: [] },
-  { id: "gunjjang", name: "군쨩", color: "#3a3a44", desc: "군군의 ■■■ ■■.", tags: [] },
+  { id: "gunjjang", name: "군쨩", color: "#ffffff", desc: "군군의 ■■■ ■■.", tags: [] },
   { id: "worldtree", name: "세계수", color: "#7f9f73", desc: "공개된 정보 없음.", tags: [] },
 ];
