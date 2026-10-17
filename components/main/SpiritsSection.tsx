@@ -135,9 +135,7 @@ export default function SpiritsSection() {
       <div className="container">
         <Reveal>
           <p className="eyebrow">정령</p>
-          <h2 className="section-title">정령들의 집</h2>
-          <p className={styles.lead}>문을 눌러 정령의 방에 들어가 보세요.</p>
-        </Reveal>
+          <h2 className="section-title">정령들의 집</h2>        </Reveal>
 
         <Reveal delay={120}>
           <div

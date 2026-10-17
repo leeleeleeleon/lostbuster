@@ -43,9 +43,7 @@ export default function RelationsSection() {
       <div className="container">
         <Reveal>
           <p className="eyebrow">관계도</p>
-          <h2 className="section-title">서로를 바라보는 시선</h2>
-          <p className={styles.lead}>정령마다 다른 정령들에게 품은 첫인상. 정령을 골라 보세요.</p>
-        </Reveal>
+          <h2 className="section-title">서로를 바라보는 시선</h2>        </Reveal>
 
         <ul className={styles.picker}>
           {SPIRITS.map((s) => {
