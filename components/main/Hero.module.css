@@ -35,21 +35,31 @@
   font-size: clamp(14px, 1.5vw, 17px);
 }
 
-/* 정령 한 줄 */
+/* 정령 한 줄. 스탠딩은 모두 같은 배율이라 높이를 맞추면 키 차이가 그대로 보인다 */
 .lineup {
   list-style: none;
-  width: min(1160px, 100%);
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: clamp(6px, 1.2vw, 18px);
+  width: min(1240px, 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  --h: clamp(150px, 17vw, 230px);
+}
+
+.lineup li {
+  margin: 0 -0.6%;
+}
+
+.lineup li:hover {
+  position: relative;
+  z-index: 1;
 }
 
 .member {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 18px 0 14px;
+  gap: 10px;
+  padding-bottom: 12px;
   border-bottom: 2px solid transparent;
   animation: rise 0.7s ease backwards;
   animation-delay: calc(var(--i) * 60ms + 150ms);
@@ -57,21 +67,18 @@
 }
 
 .face {
-  width: 100%;
-  max-width: 96px;
+  width: 96px;
   aspect-ratio: 1;
   border-radius: 50%;
-  image-rendering: pixelated;
-  /* 잘라낸 얼굴 가장자리의 검은 배경을 지운다 */
-  mask-image: radial-gradient(circle, #000 52%, transparent 66%);
+  background-color: #fff;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .standing {
-  width: 100%;
-  aspect-ratio: 1 / 2;
-  object-fit: contain;
-  object-position: bottom;
+  display: block;
+  height: var(--h);
+  width: auto;
+  max-width: none;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
@@ -140,8 +147,9 @@
 
 @media (max-width: 760px) {
   .lineup {
-    grid-template-columns: repeat(5, 1fr);
-    row-gap: 8px;
+    flex-wrap: wrap;
+    row-gap: 12px;
+    --h: 27vw;
   }
 }
 
