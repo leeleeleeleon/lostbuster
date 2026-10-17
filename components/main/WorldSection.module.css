@@ -2,82 +2,164 @@
   padding: clamp(96px, 14vw, 180px) 0 clamp(72px, 10vw, 140px);
 }
 
-.chapters {
+/* 도트풍 책: 모든 테두리·그림자는 4px 단위의 딱딱한 계단으로 */
+.bookWrap {
   margin-top: 64px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
+  --px: 4px;
+  --ink: #3a2614;
+  --ink-soft: #6b4a2b;
+  --paper: #efdfb2;
+  --paper-2: #e2cd93;
+  --paper-3: #c9b073;
+  --cover: #6b3f1d;
+  --cover-hi: #8f5a2c;
+  --cover-lo: #43250f;
+  --edge: #1e1007;
 }
 
-.chapter {
+.book {
   position: relative;
-  padding-top: 28px;
-  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: calc(var(--px) * 4);
+  background: var(--cover);
+  box-shadow:
+    inset var(--px) var(--px) 0 var(--cover-hi),
+    inset calc(var(--px) * -1) calc(var(--px) * -1) 0 var(--cover-lo),
+    var(--px) 0 0 var(--edge),
+    calc(var(--px) * -1) 0 0 var(--edge),
+    0 var(--px) 0 var(--edge),
+    0 calc(var(--px) * -1) 0 var(--edge),
+    0 calc(var(--px) * 4) 0 rgba(0, 0, 0, 0.45);
 }
 
-.no {
-  font-family: var(--font-cinzel), serif;
-  font-size: 13px;
-  color: var(--gold);
-  letter-spacing: 0.3em;
+.page {
+  position: relative;
+  padding: 36px 36px 56px;
+  color: var(--ink);
+  font-family: var(--font-pixel), monospace;
+  /* 아래로 겹친 종이 장 */
+  box-shadow:
+    0 var(--px) 0 var(--paper-2),
+    0 calc(var(--px) * 2) 0 var(--paper-3);
+}
+
+.page[data-side="left"] {
+  background: linear-gradient(
+    to right,
+    var(--paper) 0 calc(100% - 24px),
+    var(--paper-2) calc(100% - 24px) calc(100% - 12px),
+    var(--paper-3) calc(100% - 12px)
+  );
+}
+
+.page[data-side="right"] {
+  background: linear-gradient(
+    to left,
+    var(--paper) 0 calc(100% - 24px),
+    var(--paper-2) calc(100% - 24px) calc(100% - 12px),
+    var(--paper-3) calc(100% - 12px)
+  );
+}
+
+.ribbon {
+  position: absolute;
+  top: calc(var(--px) * -1);
+  right: 56px;
+  z-index: 1;
+  width: 20px;
+  height: 84px;
+  background: #a8322b;
+  box-shadow: inset calc(var(--px) * -1) 0 0 #7a211c;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+}
+
+.pageHead {
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.1em;
+  border-bottom: var(--px) dotted var(--paper-3);
+}
+
+.chapter + .chapter {
+  margin-top: 28px;
 }
 
 .title {
-  font-family: var(--font-serif), serif;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 22px;
-  margin: 10px 0 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.no {
+  display: inline-grid;
+  place-items: center;
+  min-width: 30px;
+  height: 26px;
+  padding: 0 6px;
+  font-size: 11px;
+  color: var(--paper);
+  background: var(--ink);
+  box-shadow:
+    inset calc(var(--px) * -1) calc(var(--px) * -1) 0 #1a0f06;
 }
 
 .body {
-  color: var(--muted);
   font-size: 15px;
-  line-height: 1.95;
+  line-height: 1.85;
   word-break: keep-all;
-}
-
-.regionsTitle {
-  margin-top: 96px;
-  font-family: var(--font-serif), serif;
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--gold);
-  letter-spacing: 0.3em;
 }
 
 .regions {
   list-style: none;
-  margin-top: 24px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.region {
-  height: 100%;
-  padding: 24px 22px;
-  border: 1px solid var(--line);
-  background: rgba(5, 10, 7, 0.5);
+  gap: 22px;
 }
 
 .regionName {
-  font-family: var(--font-serif), serif;
-  font-size: 19px;
-  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.regionName::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #4f7a3a;
+  box-shadow: inset -3px -3px 0 #2f4f22;
+}
+
+.folio {
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+  color: var(--ink-soft);
 }
 
 @media (max-width: 860px) {
-  .chapters {
+  .book {
     grid-template-columns: 1fr;
-    gap: 36px;
+    row-gap: calc(var(--px) * 4);
   }
 
-  .regions {
-    grid-template-columns: repeat(2, 1fr);
+  .page[data-side] {
+    padding: 28px 22px 52px;
+    background: var(--paper);
   }
-}
 
-@media (max-width: 520px) {
-  .regions {
-    grid-template-columns: 1fr;
+  .ribbon {
+    right: 28px;
   }
 }

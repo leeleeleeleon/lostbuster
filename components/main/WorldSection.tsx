@@ -34,29 +34,36 @@ export default function WorldSection() {
           <p className="eyebrow">세계관</p>
           <h2 className="section-title">세계수가 지키는 숲</h2>
         </Reveal>
-        <div className={styles.chapters}>
-          {CHAPTERS.map((c, i) => (
-            <Reveal key={c.no} delay={i * 140} className={styles.chapter}>
-              <span className={styles.no}>{c.no}</span>
-              <h3 className={styles.title}>{c.title}</h3>
-              <p className={styles.body}>{c.body}</p>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal>
-          <h3 className={styles.regionsTitle}>지역</h3>
+        <Reveal className={styles.bookWrap}>
+          <div className={styles.book}>
+            <span className={styles.ribbon} aria-hidden="true" />
+            <div className={styles.page} data-side="left">
+              <p className={styles.pageHead}>제1장 · 숲의 기록</p>
+              {CHAPTERS.map((c) => (
+                <article key={c.no} className={styles.chapter}>
+                  <h3 className={styles.title}>
+                    <span className={styles.no}>{c.no}</span>
+                    {c.title}
+                  </h3>
+                  <p className={styles.body}>{c.body}</p>
+                </article>
+              ))}
+              <span className={styles.folio}>- 1 -</span>
+            </div>
+            <div className={styles.page} data-side="right">
+              <p className={styles.pageHead}>제2장 · 지역</p>
+              <ul className={styles.regions}>
+                {REGIONS.map((r) => (
+                  <li key={r.name} className={styles.region}>
+                    <h4 className={styles.regionName}>{r.name}</h4>
+                    <p className={styles.body}>{r.body}</p>
+                  </li>
+                ))}
+              </ul>
+              <span className={styles.folio}>- 2 -</span>
+            </div>
+          </div>
         </Reveal>
-        <ul className={styles.regions}>
-          {REGIONS.map((r, i) => (
-            <li key={r.name}>
-              <Reveal delay={i * 100} className={styles.region}>
-                <h4 className={styles.regionName}>{r.name}</h4>
-                <p className={styles.body}>{r.body}</p>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
   );
