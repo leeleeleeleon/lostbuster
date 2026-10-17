@@ -1,14 +1,8 @@
 .section {
   padding: clamp(72px, 10vw, 140px) 0;
-  background: #120c1c;
-  /* 어두운 베일 구역이라 밝은 글자와 금색 강조를 여기서만 쓴다 */
-  --cream: #fff8e4;
+  background: var(--bg);
+  /* 베일 구역만 금색 강조를 쓴다 */
   --gold: #ffd84a;
-  --text: #fff8e4;
-  --ink: #fff8e4;
-  --paper: #120c1c;
-  --win: #120c1c;
-  color: var(--text);
 }
 
 .head {
@@ -57,7 +51,7 @@
   min-width: 0;
   overflow: hidden;
   cursor: pointer;
-  background: linear-gradient(180deg, var(--c), #120c1c 92%);
+  background: linear-gradient(180deg, var(--c), #000000 92%);
   box-shadow: inset 0 0 0 4px #2b1f3d;
   transition: flex 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
   outline: none;
@@ -77,7 +71,7 @@
   font-size: clamp(18px, 2vw, 26px);
   color: var(--cream);
   /* 연한 상징색 위에서도 읽히게 픽셀 외곽선 */
-  text-shadow: 2px 0 0 #120c1c, -2px 0 0 #120c1c, 0 2px 0 #120c1c, 0 -2px 0 #120c1c;
+  text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
   white-space: nowrap;
   transition: opacity 0.2s;
 }

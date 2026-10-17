@@ -25,7 +25,7 @@
   inset: 0;
   z-index: 100;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 55%, #ffffff 0%, #ffffff 45%, #fafaf7 100%);
+  background: radial-gradient(circle at 50% 55%, #ffffff 0%, #ffffff 25%, #000000 100%);
   animation: fadeOut 1.4s ease-out forwards;
 }
 

@@ -206,7 +206,7 @@
 }
 
 .item[data-active] {
-  background: rgba(26, 26, 26, 0.04);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .item .sm {
