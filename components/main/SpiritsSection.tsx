@@ -202,6 +202,7 @@ export default function SpiritsSection() {
                   </div>
                 </dl>
                 <div className={styles.combat}>
+                  <p className={styles.combatNote}>※ 게임에는 반영되어 있지 않습니다.</p>
                   <p className={styles.combatHead}>
                     전투 능력치
                     <span>
