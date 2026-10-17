@@ -1,10 +1,11 @@
 // 정령들의 첫인상 관계도. 각 오너가 그린 관계도 그림을 옮긴 것.
 // from/to 는 lib/spirits.ts 의 id, "tree" 는 세계수.
 // 오유, 이든의 관계도는 아직 받지 못했다.
-export type Kind = "couple" | "bff" | "friend" | "hate";
+export type Kind = "couple" | "crush" | "bff" | "friend" | "hate";
 
 export const KINDS: Record<Kind, { label: string; color: string }> = {
   couple: { label: "커플", color: "#ff2f6d" },
+  crush: { label: "짝사랑", color: "#ff9cc4" },
   bff: { label: "베프", color: "#3fe05a" },
   friend: { label: "친구", color: "#ffd21f" },
   hate: { label: "죽어", color: "#8d8d8d" },
@@ -46,7 +47,7 @@ export const CHARTS: Chart[] = [
   {
     from: "ire",
     relations: [
-      { to: "tree", kinds: ["couple"], text: "사실 사랑이라기보단 싫어할 때도 있었고, 그냥 어떤 특별한 존재임" },
+      { to: "tree", kinds: ["crush"], text: "사실 사랑이라기보단 싫어할 때도 있었고, 그냥 어떤 특별한 존재임" },
       { to: "i", kinds: ["bff"], text: "그닥 관심은 없었는데 필요한 걸 만들어준다는 점에서 굉장히 친하게 지내고 싶음. 이것저것 먹을 것도 사줄 수 있음" },
       { to: "oyu", kinds: ["friend"], text: "그나마 예의가 바름" },
       { to: "iden", kinds: ["friend"], text: "시도 때도 없이 욕하는 ㅁㅊ새끼. 그래도 싫진 않음" },
