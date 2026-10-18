@@ -64,7 +64,7 @@ export default function Hero() {
 
       <div className={styles.pick}>
         <p className={styles.now} aria-live="polite">
-          No.{String(cur + 1).padStart(2, "0")} {s.name}
+          No.{String(cur + 1).padStart(2, "0")} {s.name} {s.en !== s.name && <span className={styles.en}>{s.en}</span>}
         </p>
         <PixelWindow className={styles.party} role="tablist" aria-label="정령 고르기" onKeyDown={onKey}>
           {SPIRITS.map((sp, i) => (
@@ -75,7 +75,7 @@ export default function Hero() {
               }}
               role="tab"
               aria-selected={i === cur}
-              aria-label={sp.name}
+              aria-label={sp.en !== sp.name ? `${sp.name} ${sp.en}` : sp.name}
               tabIndex={i === cur ? 0 : -1}
               className={`${styles.chip} ${i === cur ? styles.on : ""}`}
               onClick={() => setCur(i)}

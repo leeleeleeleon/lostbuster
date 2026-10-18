@@ -3,6 +3,8 @@
 export type Spirit = {
   id: string;
   name: string;
+  // 영문 이름. 오너가 정한 표기 그대로
+  en: string;
   title: string;
   color: string;
   glow: string;
@@ -46,6 +48,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "magenta",
     name: "마젠타",
+    en: "Majenta",
     title: "",
     color: "#d23c98",
     glow: "#ff6cc4",
@@ -58,6 +61,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "oyu",
     name: "오유",
+    en: "OU",
     title: "주인공조",
     color: "#9ccf4a",
     glow: "#c4f57a",
@@ -71,6 +75,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "gungun",
     name: "군군",
+    en: "KunKun",
     title: "주인공조",
     color: "#17171a",
     glow: "#7d8ba0",
@@ -85,6 +90,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "iden",
     name: "이든",
+    en: "Eden",
     title: "",
     color: "#f1eee4",
     glow: "#ffffff",
@@ -97,6 +103,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "ire",
     name: "이레",
+    en: "Ireh",
     title: "",
     color: "#efc42f",
     glow: "#ffe06a",
@@ -109,6 +116,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "jamo",
     name: "자모",
+    en: "Jamo",
     title: "",
     color: "#c8313a",
     glow: "#ff5a4a",
@@ -121,6 +129,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "i",
     name: "I",
+    en: "I",
     title: "",
     color: "#e6ecef",
     glow: "#d8f2ff",
@@ -137,6 +146,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "innocent",
     name: "이노센트",
+    en: "Innocent",
     title: "",
     color: "#f2b4c6",
     glow: "#ffd2e0",
@@ -149,6 +159,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "welsiet",
     name: "웰시엣",
+    en: "Welsies",
     title: "",
     color: "#7a48b8",
     glow: "#b583ff",
@@ -161,6 +172,7 @@ export const SPIRITS: Spirit[] = [
   {
     id: "cyan",
     name: "시안",
+    en: "Sian",
     title: "",
     color: "#38c3d4",
     glow: "#7cf0ff",

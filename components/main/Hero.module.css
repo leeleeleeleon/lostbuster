@@ -143,3 +143,9 @@
 @media (prefers-reduced-motion: reduce) {
   .hero, .art, .chip { transition: none; }
 }
+
+.en {
+  font-family: var(--font-en), monospace;
+  margin-left: 4px;
+  opacity: 0.75;
+}

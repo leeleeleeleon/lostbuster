@@ -516,3 +516,18 @@
 @media (max-width: 760px) {
   .info { max-height: none; overflow: visible; }
 }
+
+/* 영문 이름 */
+.en {
+  font-family: var(--font-en), monospace;
+  font-size: 0.85em;
+  color: var(--muted);
+}
+
+.roomEn {
+  margin: -20px 0 24px 8px;
+  font-family: var(--font-en), monospace;
+  font-size: clamp(16px, 1.8vw, 22px);
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}

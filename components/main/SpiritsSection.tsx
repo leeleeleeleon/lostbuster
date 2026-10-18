@@ -164,7 +164,7 @@ export default function SpiritsSection() {
                     aria-label={`${s.name}의 방`}
                   >
                     <span className={styles.doorLabel} data-below={d.side === "bottom" || undefined}>
-                      {s.name}
+                      {s.name} {s.en !== s.name && <span className={styles.en}>{s.en}</span>}
                     </span>
                   </button>
                 );
@@ -181,6 +181,7 @@ export default function SpiritsSection() {
                 <button className={styles.chip} style={vars(s)} data-lead={s.lead || undefined} onClick={() => enter(d)}>
                   <span className={styles.dot} />
                   {s.name}
+                  {s.en !== s.name && <span className={styles.en}>{s.en}</span>}
                 </button>
               </li>
             );
@@ -213,6 +214,7 @@ export default function SpiritsSection() {
               <div className={styles.info}>
                 {spirit.title && <p className={styles.roomTitle}>{spirit.title}</p>}
                 <h3 className={styles.roomName}>{spirit.name}</h3>
+                {spirit.en !== spirit.name && <p className={styles.roomEn}>{spirit.en}</p>}
                 <ul className={styles.traits}>
                   {spirit.traits.map((t) => (
                     <li key={t}>{t}</li>
