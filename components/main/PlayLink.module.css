@@ -1,0 +1,27 @@
+/* 버그제보 버튼(top 96px, 높이 약 111px) 바로 아래. 버그제보 창이 열리면 그 창이 이 위를 덮는다 */
+.link {
+  position: fixed;
+  right: 0;
+  top: 216px;
+  z-index: 19;
+  display: block;
+  width: 96px;
+  transition: transform 0.2s ease;
+}
+
+.link:hover {
+  transform: translateX(-4px) rotate(-2deg);
+}
+
+.link img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .link {
+    width: 72px;
+    top: 176px;
+  }
+}

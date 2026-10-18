@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 370" width="320" height="370">
+  <!-- 버그제보 그림과 짝을 이루는 놀이터 버튼. 직접 그린 그림으로 바꾸려면 같은 크기(320×370)의 png 로 교체 -->
+  <g stroke="#000" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- 말풍선 -->
+    <path d="M18 22 L150 12 L162 70 L118 76 L132 104 L92 78 L26 84 Z" fill="#fff"/>
+    <!-- 게임기 -->
+    <path d="M70 190 Q78 150 130 152 L210 152 Q262 150 272 192 L296 290 Q302 336 262 330 Q238 326 222 290 L120 290 Q104 326 80 330 Q40 336 46 290 Z" fill="#f2e7a6"/>
+    <!-- 십자 버튼 -->
+    <path d="M100 204 h18 v-18 h18 v18 h18 v18 h-18 v18 h-18 v-18 h-18 Z" fill="#2b2b2b" stroke-width="5"/>
+    <!-- 동그라미 버튼 -->
+    <circle cx="222" cy="200" r="13" fill="#d23c98" stroke-width="5"/>
+    <circle cx="250" cy="226" r="13" fill="#38c3d4" stroke-width="5"/>
+    <circle cx="194" cy="226" r="13" fill="#9ccf4a" stroke-width="5"/>
+    <circle cx="222" cy="252" r="13" fill="#efc42f" stroke-width="5"/>
+    <!-- 반짝이 -->
+    <path d="M276 96 l8 22 l22 8 l-22 8 l-8 22 l-8 -22 l-22 -8 l22 -8 Z" fill="#fff" stroke-width="5"/>
+    <path d="M222 70 l4 12 l12 4 l-12 4 l-4 12 l-4 -12 l-12 -4 l12 -4 Z" fill="#fff" stroke-width="4"/>
+  </g>
+  <text x="90" y="58" text-anchor="middle" font-family="'Malgun Gothic','Apple SD Gothic Neo',sans-serif" font-size="34" font-weight="700" fill="#000">놀이터</text>
+</svg>

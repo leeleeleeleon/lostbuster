@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Hero from "./Hero";
 import PatchNotes from "./PatchNotes";
+import PlayLink from "./PlayLink";
 import DownloadSection from "./DownloadSection";
 import RelationsSection from "./RelationsSection";
 import SpiritsSection from "./SpiritsSection";
@@ -35,6 +36,7 @@ export default function MainSite({ fromIntro, onReplayIntro }: Props) {
         <SpoilerSection />
       </main>
       <Footer />
+      <PlayLink />
       <BugReport />
       {fromIntro && <div className={styles.flashOut} aria-hidden="true" />}
     </div>
