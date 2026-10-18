@@ -7,7 +7,7 @@ export default function PlayLink() {
   return (
     <a className={styles.link} href={PLAYGROUND_URL} target="_blank" rel="noopener noreferrer" aria-label="놀이터">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/playground.svg" alt="" width={320} height={370} />
+      <img src="/playground.png" alt="" width={320} height={316} />
     </a>
   );
 }
