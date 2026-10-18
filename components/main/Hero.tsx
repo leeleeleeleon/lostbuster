@@ -18,7 +18,8 @@ const inkOn = (hex: string) => {
 };
 
 export default function Hero() {
-  const [cur, setCur] = useState(0);
+  // 첫 화면엔 오유가 먼저 나온다
+  const [cur, setCur] = useState(() => Math.max(0, SPIRITS.findIndex((sp) => sp.id === "oyu")));
   const [missing, setMissing] = useState<Set<string>>(new Set());
   const chips = useRef<(HTMLButtonElement | null)[]>([]);
   const s = SPIRITS[cur];
