@@ -29,7 +29,7 @@
 
 .stage {
   position: absolute;
-  inset: 84px 0 0;
+  inset: 96px 0 0;
 }
 
 .art {
@@ -132,11 +132,11 @@
 
 /* 좁은 화면: 얼굴 칸은 5개씩 두 줄, 제목은 그 위 */
 @media (max-width: 760px) {
-  .stage { inset: 76px 0 150px; }
+  .stage { inset: 88px 0 150px; }
   .party { grid-template-columns: repeat(5, auto); }
   .corner {
     bottom: auto;
-    top: 84px;
+    top: 96px;
   }
 }
 

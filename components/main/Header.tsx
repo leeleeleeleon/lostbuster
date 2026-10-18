@@ -19,7 +19,8 @@ export default function Header({ onLogoClick }: { onLogoClick: () => void }) {
     <header className={styles.header}>
       <PixelWindow className={styles.inner}>
         <button className={styles.logo} onClick={onLogoClick} title="인트로 다시 보기">
-          LOSTBUSTER
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.png" alt="로스트버스터" width={1607} height={841} />
         </button>
         <nav className={`${styles.nav} ${open ? styles.open : ""}`}>
           {NAV.map((n) => (

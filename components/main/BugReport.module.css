@@ -2,7 +2,7 @@
 .wrap {
   position: fixed;
   right: 0;
-  top: 84px;
+  top: 96px;
   /* 헤더(20)의 펼친 메뉴가 위에 오도록 그보다 낮게 */
   z-index: 19;
   display: flex;
@@ -68,5 +68,5 @@
 
 @media (max-width: 640px) {
   .trigger { width: 72px; }
-  .wrap { top: 76px; }
+  .wrap { top: 88px; }
 }
