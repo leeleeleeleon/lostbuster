@@ -194,3 +194,51 @@
 @media (prefers-reduced-motion: reduce) {
   .card, .row { transition: none; }
 }
+
+/* 비공개 캐릭터: 안개 속에서 꿈틀대는 정체불명의 형체 */
+.unknown {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  width: 70%;
+  aspect-ratio: 3 / 4;
+  background: radial-gradient(ellipse at 50% 40%, #050806 30%, rgba(5, 8, 6, 0.7) 55%, transparent 72%);
+  filter: blur(10px);
+  border-radius: 46% 54% 40% 60% / 58% 42% 58% 42%;
+  animation: writhe 6s ease-in-out infinite alternate;
+}
+
+.unknown i {
+  position: relative;
+  font-style: normal;
+  font-size: clamp(56px, 7vw, 96px);
+  line-height: 1;
+  color: #cfe8c0;
+  text-shadow: 0 0 18px #9fd88a, 3px 0 0 rgba(226, 68, 92, 0.6), -3px 0 0 rgba(122, 168, 255, 0.6);
+  animation: flicker 3.2s steps(1) infinite;
+}
+
+@keyframes writhe {
+  0% { transform: scale(1) rotate(-3deg); border-radius: 46% 54% 40% 60% / 58% 42% 58% 42%; }
+  50% { transform: scale(1.08) rotate(2deg); border-radius: 60% 40% 55% 45% / 40% 60% 40% 60%; }
+  100% { transform: scale(0.96) rotate(4deg); border-radius: 38% 62% 48% 52% / 52% 48% 62% 38%; }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: none; }
+  42% { opacity: 0.3; transform: translateX(3px); }
+  44% { opacity: 1; transform: none; }
+  71% { opacity: 0.6; transform: translateX(-2px) skewX(-8deg); }
+  73% { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shape, .unknown i { animation: none; }
+}

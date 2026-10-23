@@ -6,6 +6,8 @@ export type Villain = {
   color: string;
   desc: string;
   tags: string[];
+  // 비공개: 사진 대신 정체불명의 형체로 가린다
+  hidden?: boolean;
 };
 
 export const VILLAINS: Villain[] = [
@@ -18,5 +20,5 @@ export const VILLAINS: Villain[] = [
   // 파란 촉수
   { id: "deguise", name: "디가이스", color: "#2f6bea", desc: "공개된 정보 없음.", tags: [] },
   { id: "gunjjang", name: "군쨩", color: "#ffffff", desc: "군군의 ■■■ ■■.", tags: [] },
-  { id: "worldtree", name: "세계수", color: "#7f9f73", desc: "공개된 정보 없음.", tags: [] },
+  { id: "worldtree", name: "세계수", color: "#7f9f73", desc: "■■■■ ■■■ ■■■.", tags: [], hidden: true },
 ];

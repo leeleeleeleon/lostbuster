@@ -38,7 +38,12 @@ export default function SpoilerSection() {
               >
                 <span className={styles.vname}>{v.name}</span>
                 <div className={styles.photo}>
-                  {missing.has(v.id) ? (
+                  {v.hidden ? (
+                    <div className={styles.unknown} aria-label="정체불명">
+                      <span className={styles.shape} />
+                      <i>?</i>
+                    </div>
+                  ) : missing.has(v.id) ? (
                     <div className={styles.slot}>
                       <i>?</i>
                       <code>villains/{v.id}.png</code>
