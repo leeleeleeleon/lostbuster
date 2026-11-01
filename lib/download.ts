@@ -1,5 +1,5 @@
 // 게임 다운로드 주소. 비어 있으면 버튼이 '준비 중'으로 표시된다.
-export const DOWNLOAD_URL = "https://x.com/Lost_Buster_";
+export const DOWNLOAD_URL = "https://tjskrrhk.tistory.com/11";
 
 // 상단 메뉴의 바깥 링크. href 가 비어 있으면 '준비 중'으로 표시된다.
 export const MENU = [
